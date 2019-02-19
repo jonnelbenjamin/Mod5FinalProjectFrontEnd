@@ -56,6 +56,12 @@ render() {
                     placeholder='Credit Card #'
                     type='creditcard'
                   />
+                  <Link to="/login"><Button animated='fade'>
+      <Button.Content visible>Back</Button.Content>
+      <Button.Content hidden>
+        <Icon name='arrow left' />
+      </Button.Content>
+    </Button></Link>
                   <Button className="loginButton">
                     Signup
                   </Button>
