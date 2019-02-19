@@ -11,7 +11,7 @@ render() {
               <Header as='h2' textAlign='center'>
                  Login
               </Header>
-              <Form size='large'>
+              <Form>
                 <Segment stacked>
                   <Form.Input
                     className='usernameInput'
