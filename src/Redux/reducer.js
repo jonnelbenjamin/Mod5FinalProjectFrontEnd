@@ -1,3 +1,6 @@
+import { combineReducers } from 'redux'
+
+
 
 let initialState = {
   count: 10000
