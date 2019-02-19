@@ -56,3 +56,7 @@ margin-top: 230px;
   .ui.grid {
     margin-top: 0 !important;
   }
+
+  h1 {
+    text-align: center;
+  }

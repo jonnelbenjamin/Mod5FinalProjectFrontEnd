@@ -12,6 +12,7 @@ render() {
       <source src="https://media.giphy.com/media/T1iZG0jsSmdZm/giphy.mp4" type="video/mp4" />
     </video>
 
+    <h1>United Relief</h1>
     <div className='login-page'>
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
