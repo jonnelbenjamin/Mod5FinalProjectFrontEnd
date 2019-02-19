@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 import Login from './Components/Login'
+import Map from './Components/Map'
 
 
 
@@ -11,8 +12,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
-        <Login/>
+
+      <Login />
+      
       </div>
     );
   }
