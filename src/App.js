@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 import Login from './Components/Login'
 import Map from './Components/Map'
+import Signup from './Components/Signup'
 
 
 
@@ -12,9 +13,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-      <Login />
-      
+      <Switch>
+      <Route path="/login" component={Login}/>
+      <Route path="/signup" component={Signup}/>
+      </Switch>
       </div>
     );
   }

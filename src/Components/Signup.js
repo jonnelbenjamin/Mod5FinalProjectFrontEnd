@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 
-class Login extends Component {
+class Signup extends Component {
 render() {
   return (
     <div>
@@ -16,14 +16,15 @@ render() {
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
               <Header as='h2' textAlign='center'>
-                 Login
+                 Signup
               </Header>
               <Form>
                 <Segment stacked>
                   <Form.Input
-                    className='usernameInput'
-                    name='username'
-                    placeholder='Username'
+                    className='emailInput'
+                    name='email'
+                    placeholder='Email'
+                    type='email'
                   />
                   <Form.Input
                     className='passwordInput'
@@ -31,15 +32,37 @@ render() {
                     placeholder='Password'
                     type='password'
                   />
+                  <Form.Input
+                    className='firstnameInput'
+                    name='firstname'
+                    placeholder='First Name'
+                    type='name'
+                  />
+                  <Form.Input
+                    className='lastnameInput'
+                    name='lastname'
+                    placeholder='Last Name'
+                    type='name'
+                  />
+                  <Form.Input
+                    className='professionInput'
+                    name='profession'
+                    placeholder='Profession'
+                    type='text'
+                  />
+                  <Form.Input
+                    className='creditcardInput'
+                    name='creditcard'
+                    placeholder='Credit Card #'
+                    type='creditcard'
+                  />
                   <Button className="loginButton">
-                    Login
+                    Signup
                   </Button>
                 </Segment>
               </Form>
               <div className='spacing'></div>
-              <Message className='signUpMessage'>
-                <Link to="/signup">Sign Up Here</Link>
-              </Message>
+
             </Grid.Column>
           </Grid>
         </div>
@@ -50,4 +73,4 @@ render() {
 
 
 
-export default Login;
+export default Signup;
