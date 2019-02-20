@@ -57,6 +57,10 @@ margin-top: 230px;
     margin-top: 0 !important;
   }
 
+  #mainTop {
+    background-color: #4A4444;
+  }
+
   h1 {
     text-align: center;
   }

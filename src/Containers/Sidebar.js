@@ -14,6 +14,7 @@ class SidebarNav extends React.Component {
 
     return (
       <div>
+      <div id="mainTop">
         <Button.Group>
           <Button disabled={visible} onClick={this.handleShowClick}>
             Show sidebar
@@ -23,7 +24,7 @@ class SidebarNav extends React.Component {
           </Button>
         </Button.Group>
         <h1>United Relief!</h1>
-
+        </div>
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
