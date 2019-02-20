@@ -6,7 +6,7 @@ import {Route, Switch} from 'react-router-dom'
 import Login from './Components/Login'
 import Map from './Components/Map'
 import Signup from './Components/Signup'
-import Navbar from './Containers/Navbar'
+import Sidebar from './Containers/Sidebar'
 
 
 
@@ -17,7 +17,7 @@ class App extends Component {
       <Switch>
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
-      <Route path="/map" component={Navbar}/>
+      <Route path="/" component={Sidebar}/>
       </Switch>
       </div>
     );
