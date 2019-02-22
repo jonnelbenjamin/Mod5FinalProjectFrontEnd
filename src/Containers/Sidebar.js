@@ -57,15 +57,46 @@ class SidebarNav extends React.Component {
           <Sidebar.Pusher>
           <MapContainer/>
                  <Segment basic>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
-                   <h1>Maybe I can put the Map Component in here?</h1>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                   <br></br>
+                  
                  </Segment>
                </Sidebar.Pusher>
              </Sidebar.Pushable>
