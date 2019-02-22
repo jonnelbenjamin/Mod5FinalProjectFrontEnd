@@ -4,7 +4,6 @@ import './App.css';
 import { connect } from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 import Login from './Components/Login'
-import Map from './Components/Map'
 import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
 import MapContainer from './Components/MapContainer'

@@ -18,10 +18,9 @@ class SidebarNav extends React.Component {
       <div id="mainTop">
         <Button.Group>
           <Button disabled={visible} onClick={this.handleShowClick}>
-            Show sidebar
+            Menu
           </Button>
           <Button disabled={!visible} onClick={this.handleHideClick}>
-            Hide sidebar
           </Button>
         </Button.Group>
         <h1>United Relief!</h1>
@@ -41,10 +40,10 @@ class SidebarNav extends React.Component {
               <Icon name='address card outline' />
               My Profile
             </Menu.Item>
-            <Menu.Item as='a'>
+            <Link to="/map"><Menu.Item as='a'>
               <Icon name='map' />
               Map
-            </Menu.Item>
+            </Menu.Item></Link>
             <Menu.Item as='a'>
               <Icon name='building' />
               Organizations
@@ -96,7 +95,7 @@ class SidebarNav extends React.Component {
                    <br></br>
                    <br></br>
                    <br></br>
-                  
+
                  </Segment>
                </Sidebar.Pusher>
              </Sidebar.Pushable>
