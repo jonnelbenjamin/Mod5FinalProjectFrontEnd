@@ -4,7 +4,8 @@ import APIkey from '../googlemapsAPIkey'
 
 const mapStyles = {
   width: '100%',
-  height: '100%'
+  height: '100%',
+  paddingBottom: '600px'
 };
 
 export class MapContainer extends Component {

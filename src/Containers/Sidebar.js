@@ -23,7 +23,7 @@ class SidebarNav extends React.Component {
           <Button disabled={!visible} onClick={this.handleHideClick}>
           </Button>
         </Button.Group>
-        <h1>United Relief!</h1>
+        <h1>United Relief</h1>
         </div>
         <Sidebar.Pushable as={Segment}>
           <Sidebar
@@ -54,47 +54,10 @@ class SidebarNav extends React.Component {
             </Menu.Item></Link>
           </Sidebar>
           <Sidebar.Pusher>
-          <MapContainer/>
-                 <Segment basic>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
-                   <br></br>
+                 <Segment basic id="mapSegment">
+
+
+                   <MapContainer/>
 
                  </Segment>
                </Sidebar.Pusher>

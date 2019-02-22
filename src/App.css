@@ -1,10 +1,5 @@
 
 
-/* .login-page {
-  position: relative;
-margin-left: 520px;
-margin-top: 230px;
-} */
 
 #video {
   position: absolute;
@@ -58,9 +53,18 @@ margin-top: 230px;
   }
 
   #mainTop {
-    background-color: #4A4444;
+    background-color: #0b98de;
   }
 
   h1 {
     text-align: center;
+    font-family: sans-serif;
+    /* font-size: 9px; */
+    color: white;
+  }
+
+   #mapSegment{
+    padding-bottom: 600px;
+
+
   }
