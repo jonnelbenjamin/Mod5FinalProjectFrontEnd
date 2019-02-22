@@ -1,6 +1,7 @@
 import React from 'react';
 import {Menu, Divider,Button, Header, Icon, Image, Segment, Sidebar} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import MapContainer from '../Components/MapContainer'
 
 class SidebarNav extends React.Component {
   state = { visible: false }
@@ -54,8 +55,8 @@ class SidebarNav extends React.Component {
             </Menu.Item></Link>
           </Sidebar>
           <Sidebar.Pusher>
+          <MapContainer/>
                  <Segment basic>
-
                    <h1>Maybe I can put the Map Component in here?</h1>
                    <h1>Maybe I can put the Map Component in here?</h1>
                    <h1>Maybe I can put the Map Component in here?</h1>

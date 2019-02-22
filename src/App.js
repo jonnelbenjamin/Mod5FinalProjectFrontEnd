@@ -7,6 +7,7 @@ import Login from './Components/Login'
 import Map from './Components/Map'
 import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
+import MapContainer from './Components/MapContainer'
 
 
 
@@ -17,6 +18,7 @@ class App extends Component {
       <Switch>
       <Route path="/signup" component={Signup}/>
       <Route path="/main" component={Sidebar}/>
+      <Route path="/map" component={MapContainer}/>
       <Route path="/" component={Login}/>
       </Switch>
       </div>
