@@ -28,7 +28,7 @@ class SidebarNav extends React.Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
-            animation='overlay'
+            animation='scale down'
             icon='labeled'
             inverted
             onHide={this.handleSidebarHide}
