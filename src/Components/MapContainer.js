@@ -23,7 +23,6 @@ export class MapContainer extends Component {
    this.props.fetchingDisasters()
  }
  onMarkerClick = (props, marker, e) => {
-
    this.setState({
      selectedPlace: props,
      activeMarker: marker,
@@ -52,10 +51,11 @@ export class MapContainer extends Component {
          lng: 0
        }}
        onClick={this.onMapClicked}>
+       {this.props.disasters.map( disaster =>
         <Marker
-          name={'Dolores Park'}
-          position={{lat: 42, lng: -88}}
-          onClick={this.onMarkerClick} />
+          name={disaster.location.name}
+          position={{lat: disaster['latitude'], lng: disaster['longitude']}}
+          onClick={this.onMarkerClick} />)}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>

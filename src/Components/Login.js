@@ -25,12 +25,16 @@ render() {
                     className='usernameInput'
                     name='username'
                     placeholder='Username'
+                    fluid icon='user'
+                    iconPosition='left'
                   />
                   <Form.Input
                     className='passwordInput'
                     name='password'
                     placeholder='Password'
                     type='password'
+                    fluid icon='lock'
+                    iconPosition='left'
                   />
                   <Button className="loginButton">
                     Login
