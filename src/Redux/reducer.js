@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux'
 
-
-
-let initialState = {
-  count: 10000
+const fetchingDisastersReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCHED_DISASTERS":
+    return action.disasters
+    default:
+    return state
+  }
 }
 
-const reducer = (oldState=initialState, action) => {
-  let newState = {...oldState}
-  return newState
-}
+const reducer = combineReducers({
+  disasters: fetchingDisastersReducer
+})
 
 export default reducer;

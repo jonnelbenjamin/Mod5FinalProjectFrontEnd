@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import APIkey from '../googlemapsAPIkey'
 import InfoWindow from './InfoWindow'
+import { connect } from 'react-redux'
+import {fetchingDisasters} from '../Redux/actions'
 
 const mapStyles = {
   width: '100%',
@@ -17,6 +19,9 @@ export class MapContainer extends Component {
    selectedPlace: {},
  };
 
+ componentDidMount(){
+   this.props.fetchingDisasters()
+ }
  onMarkerClick = (props, marker, e) => {
 
    this.setState({
@@ -46,8 +51,7 @@ export class MapContainer extends Component {
          lat: 0,
          lng: 0
        }}
-       onClick={this.onMapClicked}
-       >
+       onClick={this.onMapClicked}>
         <Marker
           name={'Dolores Park'}
           position={{lat: 42, lng: -88}}
@@ -55,7 +59,7 @@ export class MapContainer extends Component {
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
-            <div><h1>{this.state.selectedPlace.name}</h1></div>
+            <div><h3>{this.state.selectedPlace.name}</h3></div>
           </InfoWindow>
       </Map>
       </div>
@@ -63,6 +67,20 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
+const mapStateToProps = state => {
+  return {
+    disasters: state.disasters
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchingDisasters: () => {dispatch(fetchingDisasters())}
+  }
+}
+
+const WrappedContainer = GoogleApiWrapper({
   apiKey: (APIkey)
 })(MapContainer)
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer);
