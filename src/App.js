@@ -7,7 +7,7 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
 import MapContainer from './Components/MapContainer'
-
+import Organizations from './Containers/Organizations'
 
 
 class App extends Component {
@@ -18,6 +18,7 @@ class App extends Component {
       <Route path="/signup" component={Signup}/>
       <Route path="/main" component={Sidebar}/>
       <Route path="/map" component={MapContainer}/>
+      <Route path="/organizations" component={Organizations}/>
       <Route path="/" component={Login}/>
       </Switch>
       </div>
@@ -26,11 +27,7 @@ class App extends Component {
 }
 
 
-// const mapStateToProps = state => {
-//   return{
-//     countValue: state.count
-//   }
-// }
+
 
 // export default connect(mapStateToProps)(App)
 export default App;

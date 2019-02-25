@@ -3,7 +3,8 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import APIkey from '../googlemapsAPIkey'
 import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'
-import {fetchingDisasters} from '../Redux/actions'
+import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
+import {Modal} from 'semantic-ui-react'
 
 const mapStyles = {
   width: '100%',
@@ -21,14 +22,17 @@ export class MapContainer extends Component {
 
  componentDidMount(){
    this.props.fetchingDisasters()
- }
+   this.props.fetchingLocations()
+   }
+
  onMarkerClick = (props, marker, e) => {
-   this.setState({
-     selectedPlace: props,
-     activeMarker: marker,
-     showingInfoWindow: true
-   })
- }
+     this.setState({
+       selectedPlace: props,
+       activeMarker: marker,
+       showingInfoWindow: true
+     })
+   }
+
 
  onMapClicked = (props) => {
    if (this.state.showingInfoWindow) {
@@ -41,6 +45,7 @@ export class MapContainer extends Component {
 
   render() {
     return (
+
       <div>
       <Map
         google={this.props.google}
@@ -60,8 +65,10 @@ export class MapContainer extends Component {
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
             <div><h3>{this.state.selectedPlace.name}</h3></div>
+            <div><button>Click Here!</button></div>
           </InfoWindow>
       </Map>
+      <Modal trigger={<button>Click</button>}/>
       </div>
     )
   }
@@ -69,13 +76,15 @@ export class MapContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    disasters: state.disasters
+    disasters: state.disasters,
+    locations: state.locations
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingDisasters: () => {dispatch(fetchingDisasters())}
+    fetchingDisasters: () => {dispatch(fetchingDisasters())},
+    fetchingLocations: () => {dispatch(fetchingLocations())}
   }
 }
 

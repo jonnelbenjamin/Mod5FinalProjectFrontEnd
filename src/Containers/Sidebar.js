@@ -1,7 +1,8 @@
 import React from 'react';
 import {Menu, Divider,Button, Header, Icon, Image, Segment, Sidebar} from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom'
 import MapContainer from '../Components/MapContainer'
+import Organizations from './Organizations'
 
 class SidebarNav extends React.Component {
   state = { visible: false }
@@ -44,10 +45,10 @@ class SidebarNav extends React.Component {
               <Icon name='map' />
               Map
             </Menu.Item></Link>
-            <Menu.Item as='a'>
+          <Link to="/main/organizations"><Menu.Item as='a'>
               <Icon name='building' />
               Organizations
-            </Menu.Item>
+            </Menu.Item></Link>
             <Link to="/login"><Menu.Item as='a'>
               <Icon name='sign-out' />
               Sign Out
@@ -56,9 +57,10 @@ class SidebarNav extends React.Component {
           <Sidebar.Pusher>
                  <Segment basic id="mapSegment">
 
-
-                   <MapContainer/>
-
+                   <Switch>
+                    <Route path="/main/organizations" component={Organizations}/>
+                   <Route path="/main" component={MapContainer}/>
+                   </Switch>
                  </Segment>
                </Sidebar.Pusher>
              </Sidebar.Pushable>

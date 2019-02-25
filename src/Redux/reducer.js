@@ -9,8 +9,28 @@ const fetchingDisastersReducer = (state = [], action) => {
   }
 }
 
+const fetchingLocationsReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_LOCATIONS":
+    return action.locations
+    default:
+    return state
+  }
+}
+
+const fetchingOrganizationsReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_ORGANIZATIONS":
+    return action.organizations
+    default:
+    return state
+  }
+}
+
 const reducer = combineReducers({
-  disasters: fetchingDisastersReducer
+  disasters: fetchingDisastersReducer,
+  locations: fetchingLocationsReducer,
+  organizations: fetchingOrganizationsReducer
 })
 
 export default reducer;
