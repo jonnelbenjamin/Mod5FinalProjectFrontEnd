@@ -17,7 +17,6 @@ class App extends Component {
       <Switch>
       <Route path="/signup" component={Signup}/>
       <Route path="/main" component={Sidebar}/>
-      <Route path="/map" component={MapContainer}/>
       <Route path="/organizations" component={Organizations}/>
       <Route path="/" component={Login}/>
       </Switch>

@@ -41,7 +41,7 @@ class SidebarNav extends React.Component {
               <Icon name='address card outline' />
               My Profile
             </Menu.Item>
-            <Link to="/map"><Menu.Item as='a'>
+            <Link to="/main"><Menu.Item as='a'>
               <Icon name='map' />
               Map
             </Menu.Item></Link>
