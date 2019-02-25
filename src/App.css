@@ -56,15 +56,20 @@
     background-color: #0b98de;
   }
 
-  h1 {
+  .navbarOrgName {
     text-align: center;
-    font-family: sans-serif;
-    /* color: white; */
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 35px;
+    margin-top: inherit;
   }
 
    #mapSegment{
     padding-bottom: 600px;
     width: 98%;
+  }
 
-
+  .socialMediaButtons {
+    position: relative;
+    left: 1080px;
+    bottom: 0px;
   }

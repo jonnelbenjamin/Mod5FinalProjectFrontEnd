@@ -1,6 +1,8 @@
 import React from 'react'
 import {fetchingOrganizations} from '../Redux/actions'
 import { connect } from 'react-redux'
+import OrgInfo from '../Components/OrgInfo'
+import {Grid} from 'semantic-ui-react'
 
 class Organizations extends React.Component {
 
@@ -10,7 +12,26 @@ class Organizations extends React.Component {
 
   render(){
     return(
-    <div>afhia</div>
+      <div>
+        <Grid
+          centered
+          >
+    {this.props.organizations.map(organization =>
+
+      <Grid.Column
+        width={4}
+        relaxed columns={6}
+        >
+        <OrgInfo
+        id={organization.id}
+        name={organization.name}
+        description={organization.description}
+        financialNeed={organization.financial_need}
+        />
+    </Grid.Column>
+    )}
+    </Grid>
+    </div>
   )
   }
 }

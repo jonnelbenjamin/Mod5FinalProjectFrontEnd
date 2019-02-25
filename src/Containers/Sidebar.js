@@ -3,6 +3,7 @@ import {Menu, Divider,Button, Header, Icon, Image, Segment, Sidebar} from 'seman
 import {Route, Switch, Link} from 'react-router-dom'
 import MapContainer from '../Components/MapContainer'
 import Organizations from './Organizations'
+import MyProfile from './MyProfile'
 
 class SidebarNav extends React.Component {
   state = { visible: false }
@@ -17,15 +18,22 @@ class SidebarNav extends React.Component {
     return (
       <div>
       <div id="mainTop">
-        <Button.Group>
+        <h1 className="navbarOrgName">United Relief</h1>
+        <div>
+        <Button.Group className="menuButton">
           <Button disabled={visible} onClick={this.handleShowClick}>
             Menu
           </Button>
           <Button disabled={!visible} onClick={this.handleHideClick}>
           </Button>
         </Button.Group>
-        <h1>United Relief</h1>
-        </div>
+   <Button circular color='facebook' icon='facebook' className="socialMediaButtons"/>
+   <Button circular color='twitter' icon='twitter' className="socialMediaButtons"/>
+   <Button circular color='linkedin' icon='linkedin' className="socialMediaButtons"/>
+   <Button circular color='google plus' icon='google plus' className="socialMediaButtons"/>
+
+   </div>
+ </div>
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
@@ -37,10 +45,10 @@ class SidebarNav extends React.Component {
             visible={visible}
             width='thin'
           >
-            <Menu.Item as='a'>
+            <Link to="/main/myprofile"><Menu.Item as='a'>
               <Icon name='address card outline' />
               My Profile
-            </Menu.Item>
+            </Menu.Item></Link>
             <Link to="/main"><Menu.Item as='a'>
               <Icon name='map' />
               Map
@@ -58,6 +66,7 @@ class SidebarNav extends React.Component {
                  <Segment basic id="mapSegment">
 
                    <Switch>
+                     <Route path="/main/myprofile" component={MyProfile}/>
                     <Route path="/main/organizations" component={Organizations}/>
                    <Route path="/main" component={MapContainer}/>
                    </Switch>
