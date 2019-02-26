@@ -18,13 +18,21 @@ class SidebarNav extends React.Component {
     return (
       <div>
       <div id="mainTop">
+        <Icon
+          name='signal'
+          className="signal"
+          />
         <h1 className="navbarOrgName">United Relief</h1>
         <div>
         <Button.Group className="menuButton">
-          <Button disabled={visible} onClick={this.handleShowClick}>
+          <Button inverted disabled={visible} onClick={this.handleShowClick}>
             Menu
           </Button>
-          <Button disabled={!visible} onClick={this.handleHideClick}>
+          <Button
+            className='disableMenuButton'
+            inverted disabled={!visible}
+            onClick={this.handleHideClick}>
+            Menu
           </Button>
         </Button.Group>
    <Button circular color='facebook' icon='facebook' className="socialMediaButtons"/>

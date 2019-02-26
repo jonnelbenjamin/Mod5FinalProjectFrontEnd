@@ -57,10 +57,12 @@
   }
 
   .navbarOrgName {
+    position: relative;
     text-align: center;
     font-family: 'Luckiest Guy', cursive;
-    font-size: 35px;
+    font-size: 40px;
     margin-top: inherit;
+    top: 24px;
   }
 
    #mapSegment{
@@ -70,6 +72,18 @@
 
   .socialMediaButtons {
     position: relative;
-    left: 1080px;
-    bottom: 0px;
+    left: 1120px;
+    bottom: 4px;
+  }
+
+  .signal {
+    position: absolute;
+    left: 1418px;
+    font-size: 40px;
+ 
+  }
+
+  .disableMenuButton {
+    position: relative;
+    right: 80px;
   }

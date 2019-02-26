@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Icon, Message, Segment, Container } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import loginVid from '../ezgif.com-gif-maker.gif'
 
 
 
@@ -8,9 +9,9 @@ class Login extends Component {
 render() {
   return (
     <div>
-    <video id="video"loop muted autoplay playsinline poster="https://media.giphy.com/media/T1iZG0jsSmdZm/giphy.gif">
-      <source src="https://media.giphy.com/media/T1iZG0jsSmdZm/giphy.mp4" type="video/mp4" />
-    </video>
+      <video id="video"loop muted autoplay playsinline poster={loginVid}>
+        <source src={loginVid} type="video/mp4" />
+      </video>
 
     <h1>United Relief</h1>
     <div className='login-page'>
