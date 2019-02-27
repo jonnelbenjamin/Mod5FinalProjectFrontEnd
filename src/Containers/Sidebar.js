@@ -1,8 +1,9 @@
 import React from 'react';
-import {Menu, Divider,Button, Header, Icon, Image, Segment, Sidebar} from 'semantic-ui-react';
-import {Route, Switch, Link} from 'react-router-dom'
+import {Menu, Button, Icon, Segment, Sidebar} from 'semantic-ui-react';
+import {Route, Switch, Link, withRouter} from 'react-router-dom'
 import MapContainer from '../Components/MapContainer'
 import Organizations from './Organizations'
+import { connect } from 'react-redux'
 import MyProfile from './MyProfile'
 
 class SidebarNav extends React.Component {
@@ -86,4 +87,6 @@ class SidebarNav extends React.Component {
        }
      }
 
-export default SidebarNav;
+
+
+export default withRouter(SidebarNav);

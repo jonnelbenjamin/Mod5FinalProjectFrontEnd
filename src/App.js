@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
@@ -18,7 +18,7 @@ class App extends Component {
       <Route path="/signup" component={Signup}/>
       <Route path="/main" component={Sidebar}/>
       <Route path="/organizations" component={Organizations}/>
-      <Route path="/" component={Login}/>
+      <Route path="/" render={(props) => (this.props.currentUser ? <Redirect to='/main' /> : (<Login />) )} />
       </Switch>
       </div>
     );
@@ -26,6 +26,11 @@ class App extends Component {
 }
 
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
 
 
-export default App;
+export default withRouter(connect(mapStateToProps)(App));

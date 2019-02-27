@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Icon, Message, Segment, Container } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+import { loggingIn } from '../Redux/actions'
 import loginVid from '../ezgif.com-gif-maker.gif'
+import { connect } from 'react-redux'
+
 
 
 
 class Login extends Component {
+  state = {
+        email: "",
+        password: ""
+      };
+
+      handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+  //
+      handleLogin = () => {
+        let user = this.state
+        console.log(user)
+        this.props.loggingIn(user)
+      }
+
+
 render() {
   return (
     <div>
-      <video id="video"loop muted autoplay playsinline poster={loginVid}>
+      <video id="video"loop muted autoPlay playsInLine poster={loginVid}>
         <source src={loginVid} type="video/mp4" />
       </video>
 
@@ -24,10 +43,12 @@ render() {
                 <Segment stacked>
                   <Form.Input
                     className='usernameInput'
-                    name='username'
-                    placeholder='Username'
+                    name='email'
+                    placeholder='E-mail'
                     fluid icon='user'
                     iconPosition='left'
+                    onChange={this.handleChange}
+                   value={this.state.email}
                   />
                   <Form.Input
                     className='passwordInput'
@@ -36,8 +57,12 @@ render() {
                     type='password'
                     fluid icon='lock'
                     iconPosition='left'
+                    onChange={this.handleChange}
+                   value={this.state.password}
                   />
-                  <Button className="loginButton">
+                  <Button className="loginButton"
+                    onClick={this.handleLogin}
+                    >
                     Login
                   </Button>
                 </Segment>
@@ -54,6 +79,12 @@ render() {
 }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+      loggingIn: (user) => {dispatch(loggingIn(user))}
+    }
+  }
 
 
-export default Login;
+
+export default withRouter(connect(null, mapDispatchToProps)(Login));
