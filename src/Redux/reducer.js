@@ -59,7 +59,7 @@ const followOrganizationReducer = (state = [], action) => {
 const fetchingMyOrganizationsReducer = (state = [], action) => {
   switch (action.type) {
     case "FETCHED_MY_ORGANIZATIONS":
-      return action
+      return action.data.followingOrganizations
     default:
       return state
   }

@@ -12,7 +12,14 @@ class MyOrgs extends React.Component {
   render() {
     return (
       <div>
-
+        {this.props.followedOrganizations.map(organization =>
+          <OrgInfo
+          id={organization.organizationId}
+          name={organization.organizationName}
+          description={organization.organizationDescription}
+          financialNeed={organization.organizationFinancialNeed}
+          />)
+        }
         </div>
     )
   }
@@ -20,7 +27,7 @@ class MyOrgs extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    followedOrganizations: state.myOrganization.data,
+    followedOrganizations: state.myOrganization,
     currentUser: state.currentUser
   }
 }
