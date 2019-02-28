@@ -1,6 +1,21 @@
-import ReactDOMServer from 'react-dom/server'
+import ReactDOMServer, {ReactDOM} from 'react-dom/server'
 import React from 'react'
 class InfoWindow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.infoWindowRef = React.createRef();
+    this.onInfoWindowOpen = this.onInfoWindowOpen.bind(this);
+    if (!this.containerElement) {
+      this.containerElement = document.createElement(`div`);
+    }
+  }
+
+  onInfoWindowOpen() {
+   ReactDOM.render(React.Children.only(this.props.children), this.containerElement);
+   this.infoWindowRef.current.infowindow.setContent(this.containerElement);
+ }
+
+
   componentDidUpdate(prevProps, prevState) {
     if (this.props.map !== prevProps.map) {
       this.renderInfoWindow();
@@ -16,6 +31,10 @@ class InfoWindow extends React.Component {
         this.openWindow() :
         this.closeWindow();
     }
+  }
+
+  onInfoWindowButtonClick = (props) => {
+    console.log('hit the window button, here are the props:', props)
   }
 
   openWindow() {
@@ -44,7 +63,7 @@ class InfoWindow extends React.Component {
     });
   }
   render() {
-    return null;
+    return <button onClick={this.onInfoWindowButtonClick}>More Info</button>;
   }
   }
   export default InfoWindow;

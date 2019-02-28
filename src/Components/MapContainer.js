@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import APIkey from '../googlemapsAPIkey'
-import InfoWindow from './InfoWindow'
+import InfoWindowEx from './InfoWindowEx'
 import { connect } from 'react-redux'
 import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
-import {Modal} from 'semantic-ui-react'
 
 const mapStyles = {
   width: '100%',
@@ -43,6 +42,10 @@ export class MapContainer extends Component {
    }
  };
 
+ onInfoWindowButtonClick = (props) => {
+   console.log('hit the window button, here are the props:', props)
+ }
+
   render() {
     return (
 
@@ -58,17 +61,20 @@ export class MapContainer extends Component {
        onClick={this.onMapClicked}>
        {this.props.disasters.map( disaster =>
         <Marker
+          key={disaster.id}
+          active={disaster.active}
+          description={disaster.description}
           name={disaster.location.name}
           position={{lat: disaster['latitude'], lng: disaster['longitude']}}
           onClick={this.onMarkerClick} />)}
-          <InfoWindow
+          <InfoWindowEx
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
-            <div><h3>{this.state.selectedPlace.name}</h3></div>
-            <div><button>Click Here!</button></div>
-          </InfoWindow>
+            <div><h3>{this.state.selectedPlace.description} in {this.state.selectedPlace.name}</h3></div>
+            <div><h3>{this.state.selectedPlace.active === true ? 'Warning: Active' : 'Not Active'}</h3></div>
+            <div><button type="button" onClick={this.props.fetchingDisasters}>More Info</button></div>
+          </InfoWindowEx>
       </Map>
-      <Modal trigger={<button>Click</button>}/>
       </div>
     )
   }

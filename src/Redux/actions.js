@@ -1,4 +1,5 @@
 const fetchingDisasters = () => {
+  console.log('fetchingDisasters')
   return (dispatch) => {
     fetch('http://localhost:3000/disasters')
     .then(res => res.json())
@@ -45,7 +46,7 @@ const loggingIn = (userObj) => {
             console.log('Login Successful')
             dispatch(loggedIn(data.user_info))
             localStorage.setItem('token', data.token)
-            
+
           }
        }
      )}
@@ -91,8 +92,36 @@ const loggedIn = (user) =>  {
           return { type:"LOGGED_IN", user }
          }
 
+  const AddingToFollowOrganization = (userId, orgId) => {
+    return (dispatch) => {
+    fetch(`http://localhost:3000/follow_organizations`, {
+       method:"POST",
+       headers: {
+         "Content-type":"application/json",
+       },
+       body: JSON.stringify({
+         user_id: userId,
+         organization_id: orgId
+       })
+       }).then(res => res.json())
+        .then(data => dispatch(addedToFolowedOrganizations(data)))
+      }
+    }
+
+    const addedToFolowedOrganizations = (data) => {
+      return { type: "ADD_TO_FOLLOWED_ORGANIZATION", data}
+    }
+
+  const fetchingMyOrganizations = (userId) => {
+    return (dispatch) => {
+      fetch(`http://localhost:3000/users/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch({type: "FETCHED_MY_ORGANIZATIONS", data})
+    })
+    }
+  }
 
 
-// let x = data.find(location => location.name ===props.name)
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut}
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, fetchingMyOrganizations}

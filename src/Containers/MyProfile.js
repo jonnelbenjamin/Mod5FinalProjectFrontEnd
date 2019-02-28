@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import MyOrgs from './MyOrgs'
 
 class MyProfile extends React.Component {
   render() {
     return (
-      <div>MyProfile</div>
+      <div><MyOrgs/></div>
     )
   }
 }
 
-export default MyProfile;
+export default (MyProfile);

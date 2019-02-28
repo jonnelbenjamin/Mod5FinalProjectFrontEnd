@@ -38,7 +38,8 @@ class Organizations extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    organizations: state.organizations
+    organizations: state.organizations,
+    currentUser: state.currentUser
   }
 }
 
