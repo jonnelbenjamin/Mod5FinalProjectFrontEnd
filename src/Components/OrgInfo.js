@@ -29,7 +29,11 @@ class OrgInfo extends React.Component {
           <h1>{this.props.name}</h1>
           <h2>{this.props.description}</h2>
           <h3>{"Financial Need: $" + this.props.financialNeed}</h3>
-          <button className="ui basic green button" onClick={() => this.followOrganizations(this.props.idOrg)}>Follow</button>
+          <div class="ui buttons">
+          <button className="ui green button" onClick={() => this.followOrganizations(this.props.idOrg)}>Follow</button>
+          <div class="or"></div>
+          <button className="ui toggle button">Unfollow</button>
+          </div>
         </Card>
       </div>
 
