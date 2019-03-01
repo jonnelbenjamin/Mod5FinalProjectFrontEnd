@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import {ReactDOM} from 'react-dom/server'
+import { Segment } from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
 import InfoWindowEx from './InfoWindowEx'
 import { connect } from 'react-redux'
 import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
+import AreaInfo from './AreaInfo'
 
 const mapStyles = {
   width: '100%',
   height: '100%',
   paddingBottom: '600px'
 };
+
+const modalStyles = {
+  position: 'absolute',
+  right: '500px'
+
+}
 
 export class MapContainer extends Component {
 
@@ -42,9 +51,7 @@ export class MapContainer extends Component {
    }
  };
 
- onInfoWindowButtonClick = (props) => {
-   console.log('hit the window button, here are the props:', props)
- }
+
 
   render() {
     return (
@@ -72,9 +79,12 @@ export class MapContainer extends Component {
             visible={this.state.showingInfoWindow}>
             <div><h3>{this.state.selectedPlace.description} in {this.state.selectedPlace.name}</h3></div>
             <div><h3>{this.state.selectedPlace.active === true ? 'Warning: Active' : 'Not Active'}</h3></div>
-            <div><button type="button" onClick={this.props.fetchingDisasters}>More Info</button></div>
           </InfoWindowEx>
       </Map>
+      <div>
+    {this.state.showingInfoWindow === false ? null : <Segment raised style={modalStyles}><AreaInfo
+    selectedPlace={this.state.selectedPlace}/></Segment>}
+    </div>
       </div>
     )
   }

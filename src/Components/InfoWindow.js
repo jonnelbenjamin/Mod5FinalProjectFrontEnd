@@ -59,11 +59,11 @@ class InfoWindow extends React.Component {
     let {map, google, mapCenter} = this.props;
 
     const iw = this.infowindow = new google.maps.InfoWindow({
-      content: 'sdgoso'
+      content: ''
     });
   }
   render() {
-    return <button onClick={this.onInfoWindowButtonClick}>More Info</button>;
+    return null;
   }
   }
   export default InfoWindow;
