@@ -11,6 +11,11 @@ import Organizations from './Containers/Organizations'
 
 
 class App extends Component {
+
+  componentDidMount(){
+    
+  }
+
   render() {
     return (
       <div className="App">

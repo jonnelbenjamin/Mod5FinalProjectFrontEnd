@@ -55,6 +55,7 @@ const loggingIn = (userObj) => {
 
 const loggingOut = () => {
   return (dispatch) => {
+    localStorage.clear()
     dispatch({ type: "LOGGED_OUT" })
   }
 }

@@ -36,7 +36,7 @@ class AreaInfo extends React.Component {
   render(){
     return (
       <div>
-      <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : this.state.areaInfo.description + " in the area"}</h1>
+      <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
       <h2>Location Information:</h2>
       <h3>Name: {this.state.locationInfo.name} <button>Follow</button></h3>
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>

@@ -5,6 +5,7 @@ import MapContainer from '../Components/MapContainer'
 import Organizations from './Organizations'
 import { connect } from 'react-redux'
 import MyProfile from './MyProfile'
+import { loggingOut} from '../Redux/actions'
 
 class SidebarNav extends React.Component {
   state = { visible: false }
@@ -12,6 +13,11 @@ class SidebarNav extends React.Component {
   handleHideClick = () => this.setState({ visible: false })
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
+
+  handleLogout = () => {
+    this.props.loggingOut()
+  }
+
 
   render() {
     const { visible } = this.state
@@ -66,7 +72,7 @@ class SidebarNav extends React.Component {
               <Icon name='building' />
               Organizations
             </Menu.Item></Link>
-            <Link to="/login"><Menu.Item as='a'>
+          <Link to="/login" onClick={this.handleLogout}><Menu.Item as='a'>
               <Icon name='sign-out' />
               Sign Out
             </Menu.Item></Link>
@@ -87,6 +93,11 @@ class SidebarNav extends React.Component {
        }
      }
 
+     const mapDispatchToProps = dispatch => {
+       return {
+         loggingOut: () => {dispatch(loggingOut())}
+       }
+     }
 
 
-export default withRouter(SidebarNav);
+export default withRouter(connect(mapDispatchToProps)(SidebarNav));
