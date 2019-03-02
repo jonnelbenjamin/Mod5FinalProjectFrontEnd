@@ -58,6 +58,15 @@ const followOrganizationReducer = (state = [], action) => {
   }
 }
 
+const followLocationReducer = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_TO_FOLLOWED_LOCATION":
+      return action.data
+    default:
+      return state
+  }
+}
+
 const fetchingMyOrganizationsReducer = (state = [], action) => {
   switch (action.type) {
     case "FETCHED_MY_ORGANIZATIONS":
@@ -74,7 +83,8 @@ const reducer = combineReducers({
   currentUser: loginReducer,
   errors: errorReducer,
   followOrganization: followOrganizationReducer,
-  myOrganization: fetchingMyOrganizationsReducer
+  myOrganization: fetchingMyOrganizationsReducer,
+  followLocation: followLocationReducer
 })
 
 export default reducer;

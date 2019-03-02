@@ -156,6 +156,29 @@ const loggedIn = (user) =>  {
     }
   }
 
+  const AddingToFollowLocation = (userId, locationId) => {
+    return (dispatch) => {
+      let token = localStorage.getItem('token')
+      
+    fetch(`http://localhost:3000/follow_locations`, {
+       method:"POST",
+       headers: {
+         "Authentication": `Bearer ${token}`,
+         "Content-type":"application/json",
+       },
+       body: JSON.stringify({
+         user_id: userId,
+         location_id: locationId
+       })
+       }).then(res => res.json())
+        .then(data => dispatch(addedToFolowedLocations(data)))
+      }
+    }
+
+    const addedToFolowedLocations = (data) => {
+      return { type: "ADD_TO_FOLLOWED_LOCATION", data}
+    }
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
+
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
