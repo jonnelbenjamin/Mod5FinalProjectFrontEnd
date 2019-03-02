@@ -7,8 +7,11 @@ import {Divider, Icon, Header} from 'semantic-ui-react'
 class MyOrgs extends React.Component {
 
   componentDidMount() {
-    let userId = this.props.currentUser.id
-    this.props.fetchingMyOrganizations(userId)
+
+    // let userId = this.props.currentUser.user.id
+    // the above code for userId breaks for some reason! Fix it tomorrow! Also found in AreaInfo.js
+    this.props.fetchingMyOrganizations(1)
+
   }
   render() {
     return (
@@ -20,7 +23,7 @@ class MyOrgs extends React.Component {
         My Organizations
         </Header>
         </Divider>
-      
+
 
         {this.props.followedOrganizations.map(organization =>
           <OrgInfo

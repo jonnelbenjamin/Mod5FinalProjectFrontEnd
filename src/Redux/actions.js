@@ -52,6 +52,23 @@ const loggingIn = (userObj) => {
      )}
      }
 
+  const stayLoggedInOnRefresh = () => {
+    return (dispatch) => {
+      let token = localStorage.getItem('token')
+      fetch('http://localhost:3000/profile', {
+        method: "GET",
+        headers: {
+          "Authentication": `Bearer ${token}`
+        }
+      })
+      .then(r => r.json())
+      .then(user_info => {
+        dispatch(loggedIn(user_info))
+        console.log(user_info)
+      })
+    }
+  }
+
 
 const loggingOut = () => {
   return (dispatch) => {
@@ -95,9 +112,11 @@ const loggedIn = (user) =>  {
 
   const AddingToFollowOrganization = (userId, orgId) => {
     return (dispatch) => {
+      let token = localStorage.getItem('token')
     fetch(`http://localhost:3000/follow_organizations`, {
        method:"POST",
        headers: {
+         "Authentication": `Bearer ${token}`,
          "Content-type":"application/json",
        },
        body: JSON.stringify({
@@ -125,4 +144,4 @@ const loggedIn = (user) =>  {
 
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, fetchingMyOrganizations}
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, fetchingMyOrganizations, stayLoggedInOnRefresh}

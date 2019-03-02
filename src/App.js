@@ -8,12 +8,13 @@ import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
 import MapContainer from './Components/MapContainer'
 import Organizations from './Containers/Organizations'
+import {stayLoggedInOnRefresh} from './Redux/actions'
 
 
 class App extends Component {
 
   componentDidMount(){
-    
+    this.props.stayLoggedInOnRefresh()
   }
 
   render() {
@@ -37,5 +38,11 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    stayLoggedInOnRefresh: () => {dispatch(stayLoggedInOnRefresh())}
+  }
+}
 
-export default withRouter(connect(mapStateToProps)(App));
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

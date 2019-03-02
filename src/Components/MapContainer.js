@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import {ReactDOM} from 'react-dom/server'
 import { Segment } from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
-import InfoWindowEx from './InfoWindowEx'
+import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'
 import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
 import AreaInfo from './AreaInfo'
@@ -41,6 +41,14 @@ export class MapContainer extends Component {
      })
    }
 
+  // onMouseoverMarker = (props, marker, e) => {
+  // this.setState({
+  //   selectedPlace: props,
+  //   activeMarker: marker,
+  //   showingInfoWindow: true
+  // })
+  // }
+  // onMouseover={this.onMouseoverMarker}
 
  onMapClicked = (props) => {
    if (this.state.showingInfoWindow) {
@@ -50,7 +58,6 @@ export class MapContainer extends Component {
      })
    }
  };
-
 
 
   render() {
@@ -74,12 +81,13 @@ export class MapContainer extends Component {
           name={disaster.location.name}
           position={{lat: disaster['latitude'], lng: disaster['longitude']}}
           onClick={this.onMarkerClick} />)}
-          <InfoWindowEx
+          <InfoWindow
+
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
             <div><h3>{this.state.selectedPlace.description} in {this.state.selectedPlace.name}</h3></div>
             <div><h3>{this.state.selectedPlace.active === true ? 'Warning: Active' : 'Not Active'}</h3></div>
-          </InfoWindowEx>
+          </InfoWindow>
       </Map>
       <div>
     {this.state.showingInfoWindow === false ? null : <Segment raised style={modalStyles}><AreaInfo

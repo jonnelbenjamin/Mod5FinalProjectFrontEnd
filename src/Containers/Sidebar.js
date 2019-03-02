@@ -16,6 +16,8 @@ class SidebarNav extends React.Component {
 
   handleLogout = () => {
     this.props.loggingOut()
+    localStorage.clear()
+    
   }
 
 
@@ -100,4 +102,4 @@ class SidebarNav extends React.Component {
      }
 
 
-export default withRouter(connect(mapDispatchToProps)(SidebarNav));
+export default withRouter(connect(null,mapDispatchToProps)(SidebarNav));
