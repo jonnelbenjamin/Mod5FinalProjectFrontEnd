@@ -159,7 +159,7 @@ const loggedIn = (user) =>  {
   const AddingToFollowLocation = (userId, locationId) => {
     return (dispatch) => {
       let token = localStorage.getItem('token')
-      
+
     fetch(`http://localhost:3000/follow_locations`, {
        method:"POST",
        headers: {
@@ -179,6 +179,20 @@ const loggedIn = (user) =>  {
       return { type: "ADD_TO_FOLLOWED_LOCATION", data}
     }
 
+    const deletingFromFollowedLocations = (locationId) => {
+      return (dispatch) => {
+        fetch(`http://localhost:3000/follow_locations/${locationId}`, {
+          method: "DELETE"
+        }
+      ).then(res => res.json())
+      .then(location => dispatch(deleteFromFollowedOrganizations(location)))
+      }
+    }
+
+    const deleteFromFollowedLocations = (location) => {
+      return { type: "DELETE_LOCATION", location}
+    }
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
+
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}

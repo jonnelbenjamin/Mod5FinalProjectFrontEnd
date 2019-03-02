@@ -1,5 +1,5 @@
 import React from 'react'
-import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation} from '../Redux/actions'
+import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations} from '../Redux/actions'
 import { connect } from 'react-redux'
 
 
@@ -50,12 +50,16 @@ class AreaInfo extends React.Component {
     this.findAreaInfo()
     }
 
+  unfollowLocation = (locationId) => {
+    this.props.deletingFromFollowedLocations(locationId)
+  }
+
   render(){
     return (
       <div>
       <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
       <h2>Location Information:</h2>
-      <h3>Name: {this.state.locationInfo.name} <button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button></h3>
+      <h3>Name: {this.state.locationInfo.name} <button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button> <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button></h3>
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>
       <h3>Description: {this.state.locationInfo.description}</h3>
       <h2>Organizations Information</h2>
@@ -82,7 +86,8 @@ const mapDispatchToProps = dispatch => {
     fetchingDisasters: () => {dispatch(fetchingDisasters())},
     fetchingLocations: () => {dispatch(fetchingLocations())},
     addingToFollowOrganization: (userId, orgId) => {dispatch(AddingToFollowOrganization(userId, orgId))},
-    addingToFollowLocation: (userId, locationId) => {dispatch(AddingToFollowLocation(userId, locationId))}
+    addingToFollowLocation: (userId, locationId) => {dispatch(AddingToFollowLocation(userId, locationId))},
+    deletingFromFollowedLocations: (locationId) => {dispatch(deletingFromFollowedLocations(locationId))}
   }
 }
 

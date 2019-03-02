@@ -62,6 +62,8 @@ const followLocationReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_FOLLOWED_LOCATION":
       return action.data
+    case "DELETE_LOCATION":
+      debugger
     default:
       return state
   }

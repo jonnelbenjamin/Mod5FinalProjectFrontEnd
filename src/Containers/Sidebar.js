@@ -17,7 +17,7 @@ class SidebarNav extends React.Component {
   handleLogout = () => {
     this.props.loggingOut()
     localStorage.clear()
-    
+
   }
 
 
@@ -73,6 +73,10 @@ class SidebarNav extends React.Component {
           <Link to="/main/organizations"><Menu.Item as='a'>
               <Icon name='building' />
               Organizations
+            </Menu.Item></Link>
+          <Link to="/main/about"><Menu.Item as='a'>
+              <Icon name='file alternate outline' />
+              About
             </Menu.Item></Link>
           <Link to="/login" onClick={this.handleLogout}><Menu.Item as='a'>
               <Icon name='sign-out' />
