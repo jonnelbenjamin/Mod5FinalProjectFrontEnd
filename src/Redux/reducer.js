@@ -51,6 +51,8 @@ const followOrganizationReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_FOLLOWED_ORGANIZATION":
       return state.filter(organization => console.log(organization))
+    case "DELETE_ORG":
+      debugger
     default:
       return state
   }

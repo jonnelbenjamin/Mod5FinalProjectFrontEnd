@@ -132,6 +132,20 @@ const loggedIn = (user) =>  {
       return { type: "ADD_TO_FOLLOWED_ORGANIZATION", data}
     }
 
+    const deletingFromFollowedOrganizations = (orgId) => {
+      return (dispatch) => {
+        fetch(`http://localhost:3000/follow_organizations/${orgId}`, {
+          method: "DELETE"
+        }
+      ).then(res => res.json())
+      .then(org => dispatch(deleteFromFollowedOrganizations(org)))
+      }
+    }
+
+    const deleteFromFollowedOrganizations = (org) => {
+      return { type: "DELETE_ORG", org}
+    }
+
   const fetchingMyOrganizations = (userId) => {
     return (dispatch) => {
       fetch(`http://localhost:3000/users/${userId}`)
@@ -144,4 +158,4 @@ const loggedIn = (user) =>  {
 
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, fetchingMyOrganizations, stayLoggedInOnRefresh}
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}

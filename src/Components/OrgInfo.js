@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import {AddingToFollowOrganization} from '../Redux/actions'
+import {AddingToFollowOrganization, deletingFromFollowedOrganizations} from '../Redux/actions'
 
 class OrgInfo extends React.Component {
 
@@ -15,6 +15,10 @@ class OrgInfo extends React.Component {
 
     console.log(userId)
     console.log(orgId)
+  }
+
+  handleDelete = (orgId) => {
+    this.props.deletingFromFollowedOrganizations(orgId)
   }
 
   render(){
@@ -32,7 +36,7 @@ class OrgInfo extends React.Component {
           <div class="ui buttons">
           <button className="ui green button" onClick={() => this.followOrganizations(this.props.idOrg)}>Follow</button>
           <div class="or"></div>
-          <button className="ui toggle button">Unfollow</button>
+          <button className="ui toggle button" onClick={() => this.handleDelete(this.props.idOrg)}>Unfollow</button>
           </div>
         </Card>
       </div>
@@ -51,7 +55,8 @@ class OrgInfo extends React.Component {
 
   const mapDispatchToProps = dispatch => {
     return {
-      addingToFollowOrganization: (userId, orgId) => {dispatch(AddingToFollowOrganization(userId, orgId))}
+      addingToFollowOrganization: (userId, orgId) => {dispatch(AddingToFollowOrganization(userId, orgId))},
+      deletingFromFollowedOrganizations: (orgId) => {dispatch(deletingFromFollowedOrganizations(orgId))}
     }
   }
 
