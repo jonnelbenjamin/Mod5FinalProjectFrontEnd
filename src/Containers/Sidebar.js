@@ -5,6 +5,7 @@ import MapContainer from '../Components/MapContainer'
 import Organizations from './Organizations'
 import { connect } from 'react-redux'
 import MyProfile from './MyProfile'
+import About from '../Components/About'
 import { loggingOut} from '../Redux/actions'
 
 class SidebarNav extends React.Component {
@@ -75,6 +76,10 @@ class SidebarNav extends React.Component {
               <Icon name='building' />
               Organizations
             </Menu.Item></Link>
+          <Link to="/main/analysis"><Menu.Item as='a'>
+              <Icon name='chart area' />
+              Analysis
+            </Menu.Item></Link>
           <Link to="/main/about"><Menu.Item as='a'>
               <Icon name='file alternate outline' />
               About
@@ -90,6 +95,7 @@ class SidebarNav extends React.Component {
                    <Switch>
                      <Route path="/main/myprofile" component={MyProfile}/>
                     <Route path="/main/organizations" component={Organizations}/>
+                    <Route path="/main/about" component={About}/>
                    <Route path="/main" component={MapContainer}/>
                    </Switch>
                  </Segment>

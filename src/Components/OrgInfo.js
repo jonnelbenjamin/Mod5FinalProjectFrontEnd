@@ -17,8 +17,10 @@ class OrgInfo extends React.Component {
     console.log(orgId)
   }
 
-  handleDelete = (orgId) => {
+  handleDelete = (e, orgId) => {
     this.props.deletingFromFollowedOrganizations(orgId)
+
+    e.target.offsetParent.innerHTML = ""
   }
 
   render(){
@@ -36,7 +38,7 @@ class OrgInfo extends React.Component {
           <div class="ui buttons">
           <button className="ui green button" onClick={() => this.followOrganizations(this.props.idOrg)}>Follow</button>
           <div class="or"></div>
-          <button className="ui toggle button" onClick={() => this.handleDelete(this.props.idOrg)}>Unfollow</button>
+          <button className="ui toggle button" onClick={(e) => this.handleDelete(e, this.props.idOrg)}>Unfollow</button>
           </div>
         </Card>
       </div>

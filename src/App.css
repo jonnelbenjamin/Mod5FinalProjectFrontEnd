@@ -65,6 +65,12 @@
     top: 24px;
   }
 
+  #aboutPageText h1 {
+    position: relative;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 20px;
+  }
+
    #mapSegment{
     padding-bottom: 600px;
     width: 98%;

@@ -59,12 +59,15 @@ class AreaInfo extends React.Component {
       <div>
       <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
       <h2>Location Information:</h2>
-      <h3>Name: {this.state.locationInfo.name} <button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button> <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button></h3>
+      <h3>Name: {this.state.locationInfo.name} <button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
+      <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button>
+      <button>Go</button></h3>
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>
       <h3>Description: {this.state.locationInfo.description}</h3>
       <h2>Organizations Information</h2>
       <h3>Name: {this.state.orgInfo.name} <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button></h3>
       <h3>Financial Need: ${this.state.orgInfo.financial_need}</h3>
+      <button>Give</button>
       <h3>Description: {this.state.orgInfo.description}</h3>
       </div>
     )

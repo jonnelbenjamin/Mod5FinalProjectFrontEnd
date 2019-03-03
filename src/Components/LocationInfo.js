@@ -11,8 +11,10 @@ class LocationInfo extends React.Component {
     this.props.addingToFollowLocation(userId, locationId)
   }
 
-  unfollowLocation = (locationId) => {
+  unfollowLocation = (e, locationId) => {
     this.props.deletingFromFollowedLocations(locationId)
+
+    e.target.offsetParent.innerHTML = ""
   }
 
 
@@ -31,7 +33,7 @@ return(
       <div class="ui buttons">
       <button className="ui green button" onClick={() => this.followLocations(this.props.id)}>Follow</button>
       <div class="or"></div>
-      <button className="ui toggle button" onClick={() => this.unfollowLocation(this.props.id)}>Unfollow</button>
+      <button className="ui toggle button" onClick={(e) => this.unfollowLocation(e, this.props.id)}>Unfollow</button>
       </div>
     </Card>
   </div>
