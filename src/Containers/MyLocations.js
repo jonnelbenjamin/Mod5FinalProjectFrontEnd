@@ -1,7 +1,19 @@
 import React from 'react'
 import {Divider, Icon, Header} from 'semantic-ui-react'
+import {fetchingMyLocations} from '../Redux/actions'
+import { connect } from 'react-redux'
+import LocationInfo from '../Components/LocationInfo'
+
 
 class MyLocations extends React.Component {
+
+  componentDidMount() {
+
+    // let userId = this.props.currentUser.user.id
+    // the above code for userId breaks for some reason! Fix it tomorrow! Also found in AreaInfo.js
+    this.props.fetchingMyLocations(1)
+
+  }
   render(){
     return (
       <div>
@@ -13,11 +25,32 @@ class MyLocations extends React.Component {
         </Header>
         </Divider>
 
-        
+          {this.props.followedLocations.map(location =>
+          <LocationInfo
+          id={location.locationId}
+          name={location.locationName}
+          gdp={location.locationGDP}
+          description={location.locationDescription}
+          />
+          )}
 
         </React.Fragment>
         </div>
     )
   }
 }
-export default MyLocations;
+
+const mapStateToProps = state => {
+  return {
+    followedLocations: state.myLocation,
+    currentUser: state.currentUser
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchingMyLocations: (userId) => {dispatch(fetchingMyLocations(userId))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyLocations);

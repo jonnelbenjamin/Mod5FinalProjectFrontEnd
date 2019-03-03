@@ -52,7 +52,7 @@ const followOrganizationReducer = (state = [], action) => {
     case "ADD_TO_FOLLOWED_ORGANIZATION":
       return state.filter(organization => console.log(organization))
     case "DELETE_ORG":
-      debugger
+      return action.org
     default:
       return state
   }
@@ -78,6 +78,15 @@ const fetchingMyOrganizationsReducer = (state = [], action) => {
   }
 }
 
+const fetchingMyLocationsReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCHED_MY_LOCATIONS":
+      return action.data.followingLocations
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
   disasters: fetchingDisastersReducer,
   locations: fetchingLocationsReducer,
@@ -86,7 +95,8 @@ const reducer = combineReducers({
   errors: errorReducer,
   followOrganization: followOrganizationReducer,
   myOrganization: fetchingMyOrganizationsReducer,
-  followLocation: followLocationReducer
+  followLocation: followLocationReducer,
+  myLocation: fetchingMyLocationsReducer
 })
 
 export default reducer;

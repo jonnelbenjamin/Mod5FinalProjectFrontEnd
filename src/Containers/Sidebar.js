@@ -48,6 +48,7 @@ class SidebarNav extends React.Component {
    <Button circular color='twitter' icon='twitter' className="socialMediaButtons"/>
    <Button circular color='linkedin' icon='linkedin' className="socialMediaButtons"/>
    <Button circular color='google plus' icon='google plus' className="socialMediaButtons"/>
+   <Button circular color='instagram' icon='instagram' className="socialMediaButtons"/>
 
    </div>
  </div>

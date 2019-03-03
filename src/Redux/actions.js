@@ -190,9 +190,20 @@ const loggedIn = (user) =>  {
     }
 
     const deleteFromFollowedLocations = (location) => {
-      return { type: "DELETE_LOCATION", location}
+      return { type: "DELETE_LOCATION", location }
+    }
+
+    const fetchingMyLocations = (userId) => {
+      return (dispatch) => {
+        fetch(`http://localhost:3000/users/${userId}`)
+        .then(res => res.json())
+        .then(data => {
+
+          dispatch({type: "FETCHED_MY_LOCATIONS", data})
+      })
+      }
     }
 
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, fetchingMyLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
