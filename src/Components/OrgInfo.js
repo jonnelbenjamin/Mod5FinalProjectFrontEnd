@@ -8,9 +8,11 @@ class OrgInfo extends React.Component {
 
 
   followOrganizations = (idOrg) => {
-    let userId = this.props.currentUser.id
+    // let userId = this.props.currentUser.id
+    // Need to fix this problem above as is found on MyOrgs.js
+    let userId = 1
     let orgId = idOrg
-
+    
     this.props.addingToFollowOrganization(userId, orgId)
 
     console.log(userId)

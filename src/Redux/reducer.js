@@ -50,7 +50,7 @@ const errorReducer = (state = '', action) => {
 const followOrganizationReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_FOLLOWED_ORGANIZATION":
-      return state.filter(organization => console.log(organization))
+      return action
     case "DELETE_ORG":
       return action.org
     default:
