@@ -87,6 +87,15 @@ const fetchingMyLocationsReducer = (state = [], action) => {
   }
 }
 
+const serviceToOrganizationReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GIVE_TO_ORGANIZATION":
+      return action
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
   disasters: fetchingDisastersReducer,
   locations: fetchingLocationsReducer,
@@ -96,7 +105,8 @@ const reducer = combineReducers({
   followOrganization: followOrganizationReducer,
   myOrganization: fetchingMyOrganizationsReducer,
   followLocation: followLocationReducer,
-  myLocation: fetchingMyLocationsReducer
+  myLocation: fetchingMyLocationsReducer,
+  serviceToOrganization: serviceToOrganizationReducer
 })
 
 export default reducer;

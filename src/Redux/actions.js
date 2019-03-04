@@ -204,6 +204,31 @@ const loggedIn = (user) =>  {
       }
     }
 
+    const givingToOrganization = (donationAmount, orgId) => {
+      let token = localStorage.getItem('token')
+
+      return (dispatch) => {
+        
+        fetch('http://localhost:3000/user_organizations/give', {
+          method:"POST",
+          headers: {
+            "Authentication": `Bearer ${token}`,
+            "Content-type":"application/json",
+          },
+          body: JSON.stringify({
+            donation_amount: donationAmount,
+            donation_service: true,
+            organization_id: orgId
+          })
+          }).then(res => res.json())
+           .then(data => dispatch(giveToOrganization(data)))
+         }
+       }
+
+       const giveToOrganization = (data) => {
+         return { type: "GIVE_TO_ORGANIZATION", data }
+       }
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, fetchingMyLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, stayLoggedInOnRefresh}
+
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, fetchingMyLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, givingToOrganization, stayLoggedInOnRefresh}

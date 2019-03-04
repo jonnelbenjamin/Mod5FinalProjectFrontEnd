@@ -1,5 +1,5 @@
 import React from 'react'
-import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations} from '../Redux/actions'
+import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations, givingToOrganization} from '../Redux/actions'
 import { connect } from 'react-redux'
 import {Modal, Header} from 'semantic-ui-react'
 
@@ -10,7 +10,8 @@ class AreaInfo extends React.Component {
   state = {
     areaInfo: {},
     locationInfo: {},
-    orgInfo: {}
+    orgInfo: {},
+    amount: ""
 
   }
 
@@ -55,6 +56,17 @@ class AreaInfo extends React.Component {
     this.props.deletingFromFollowedLocations(locationId)
   }
 
+  changeAmount = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  submitPayment = () => {
+    let amount = this.state.amount
+    let orgId = this.state.orgInfo.id
+    console.log('hit submit')
+    this.props.givingToOrganization(amount, orgId)
+  }
+
   render(){
     return (
       <div>
@@ -72,7 +84,7 @@ class AreaInfo extends React.Component {
       <Modal.Header>How Much Would You Like To Give?</Modal.Header>
       <Modal.Content>
       <Modal.Header>Your donation is tax-deductible</Modal.Header>
-      
+
       <div class="fields">
     <div class="seven wide field">
       <label>Card Number</label>
@@ -103,19 +115,15 @@ class AreaInfo extends React.Component {
           </select>
         </div>
         <div class="field">
-          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year"/>
+          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year" id="givingAmount"/>
         </div>
       </div>
     </div>
     </div>
       <div class="ui segment">
-    <div class="field">
-      <div class="ui toggle checkbox">
-        <label>Do not include a receipt in the package</label>
-      </div>
-    </div>
+      <input type="text" name="amount" placeholder="Amount" onChange={this.changeAmount}/>
   </div>
-  <div class="ui button" tabindex="0">Submit Payment</div>
+  <div class="ui button" tabindex="0" onClick={this.submitPayment}>Submit Payment</div>
       </Modal.Content>
       </Modal>
       <h3>Description: {this.state.orgInfo.description}</h3>
@@ -140,7 +148,8 @@ const mapDispatchToProps = dispatch => {
     fetchingLocations: () => {dispatch(fetchingLocations())},
     addingToFollowOrganization: (userId, orgId) => {dispatch(AddingToFollowOrganization(userId, orgId))},
     addingToFollowLocation: (userId, locationId) => {dispatch(AddingToFollowLocation(userId, locationId))},
-    deletingFromFollowedLocations: (locationId) => {dispatch(deletingFromFollowedLocations(locationId))}
+    deletingFromFollowedLocations: (locationId) => {dispatch(deletingFromFollowedLocations(locationId))},
+    givingToOrganization: (amount, orgId) => {dispatch(givingToOrganization(amount, orgId))}
   }
 }
 
