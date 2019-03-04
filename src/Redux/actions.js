@@ -224,7 +224,6 @@ const loggedIn = (user) =>  {
           }).then(res => res.json())
            .then(data => dispatch(giveToOrganization(data)))
            .then(() => {
-
              fetch(`http://localhost:3000/organizations/${orgId}`, {
                method: "PUT",
                header: {
@@ -237,8 +236,7 @@ const loggedIn = (user) =>  {
              }).then(res => res.json())
              .then(data => dispatch(updateOrganizationFinancialNeed(data)))
              .then(alert('Thank you for donating!'),
-             document.getElementById('donationModal').innerHTML = ""
-           )
+             document.getElementById('donationModal').innerHTML = "")
            }
            )
 
