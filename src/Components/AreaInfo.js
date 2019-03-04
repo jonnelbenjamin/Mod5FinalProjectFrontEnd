@@ -65,6 +65,10 @@ class AreaInfo extends React.Component {
     let orgId = this.state.orgInfo.id
     console.log('hit submit')
     this.props.givingToOrganization(amount, orgId)
+    let newAmount = parseInt(document.getElementById('financialNeed').innerText.split('$')[1]) - amount
+    document.getElementById('financialNeed').innerText = `Financial Need: $${newAmount}`
+
+
   }
 
   render(){
@@ -79,7 +83,7 @@ class AreaInfo extends React.Component {
       <h3>Description: {this.state.locationInfo.description}</h3>
       <h2>Organizations Information</h2>
       <h3>Name: {this.state.orgInfo.name} <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button></h3>
-      <h3>Financial Need: ${this.state.orgInfo.financial_need}</h3>
+      <h3 id="financialNeed">Financial Need: ${this.state.orgInfo.financial_need}</h3>
       <Modal trigger={<button>Give</button>} centered={false} closeIcon={true}>
       <Modal.Header>How Much Would You Like To Give?</Modal.Header>
       <Modal.Content>
