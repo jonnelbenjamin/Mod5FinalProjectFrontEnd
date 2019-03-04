@@ -84,7 +84,7 @@ class AreaInfo extends React.Component {
       <h2>Organizations Information</h2>
       <h3>Name: {this.state.orgInfo.name} <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button></h3>
       <h3 id="financialNeed">Financial Need: ${this.state.orgInfo.financial_need}</h3>
-      <Modal trigger={<button>Give</button>} centered={false} closeIcon={true}>
+      <Modal id="donationModal"trigger={<button>Give</button>} centered={false} closeIcon={true}>
       <Modal.Header>How Much Would You Like To Give?</Modal.Header>
       <Modal.Content>
       <Modal.Header>Your donation is tax-deductible</Modal.Header>

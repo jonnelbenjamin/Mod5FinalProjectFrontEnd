@@ -236,7 +236,9 @@ const loggedIn = (user) =>  {
                }})
              }).then(res => res.json())
              .then(data => dispatch(updateOrganizationFinancialNeed(data)))
-             .then(alert('Thank you for donating!'))
+             .then(alert('Thank you for donating!'),
+             document.getElementById('donationModal').innerHTML = ""
+           )
            }
            )
 
