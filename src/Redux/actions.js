@@ -208,8 +208,9 @@ const loggedIn = (user) =>  {
       let token = localStorage.getItem('token')
 
       return (dispatch) => {
-        
-        fetch('http://localhost:3000/user_organizations/give', {
+
+        debugger
+         fetch('http://localhost:3000/user_organizations/give', {
           method:"POST",
           headers: {
             "Authentication": `Bearer ${token}`,
@@ -218,15 +219,37 @@ const loggedIn = (user) =>  {
           body: JSON.stringify({
             donation_amount: donationAmount,
             donation_service: true,
+            direct_service: false,
             organization_id: orgId
           })
           }).then(res => res.json())
            .then(data => dispatch(giveToOrganization(data)))
+           .then(() => {
+             debugger
+             fetch(`http://localhost:3000/organizations/${orgId}`, {
+               method: "PUT",
+               header: {
+                 "Authentication": `Bearer ${token}`,
+                 "Content-type":"application/json",
+               },
+               body: JSON.stringify({organization:{
+                 donation_amount: donationAmount
+               }})
+             }).then(res => res.json())
+             .then(data => dispatch(updateOrganizationFinancialNeed(data)))
+           }
+           )
          }
        }
 
        const giveToOrganization = (data) => {
          return { type: "GIVE_TO_ORGANIZATION", data }
+       }
+
+
+
+       const updateOrganizationFinancialNeed = (data) => {
+         return { type: "UPDATE_ORGANIZATION_NEED", data }
        }
 
 

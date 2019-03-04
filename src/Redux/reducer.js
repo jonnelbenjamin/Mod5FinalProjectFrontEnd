@@ -91,6 +91,8 @@ const serviceToOrganizationReducer = (state = [], action) => {
   switch (action.type) {
     case "GIVE_TO_ORGANIZATION":
       return action
+    case "UPDATE_ORGANIZATION_NEED":
+      return action.data
     default:
       return state
   }
