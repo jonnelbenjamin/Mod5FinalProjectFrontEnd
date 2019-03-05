@@ -32,8 +32,8 @@ render() {
         <source src={loginVid} type="video/mp4" />
       </video>
 
-    <h1>United Relief</h1>
-      <Segment placeholder>
+      <h1 id="loginTitle">United Relief</h1>
+      <Segment placeholder id="login">
           <Grid columns={2} relaxed='very' stackable >
             <Grid.Column style={{ maxWidth: 450 }}>
               <Form>

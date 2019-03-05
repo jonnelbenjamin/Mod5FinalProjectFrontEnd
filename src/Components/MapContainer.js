@@ -82,7 +82,6 @@ export class MapContainer extends Component {
           position={{lat: disaster['latitude'], lng: disaster['longitude']}}
           onClick={this.onMarkerClick} />)}
           <InfoWindow
-
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
             <div><h3>{this.state.selectedPlace.description} in {this.state.selectedPlace.name}</h3></div>

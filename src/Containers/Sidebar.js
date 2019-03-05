@@ -6,7 +6,9 @@ import Organizations from './Organizations'
 import { connect } from 'react-redux'
 import MyProfile from './MyProfile'
 import About from '../Components/About'
+import Analysis from '../Components/Analysis'
 import { loggingOut} from '../Redux/actions'
+import UnitedReliefLogo from '../UnitedReliefLogo.png'
 
 class SidebarNav extends React.Component {
   state = { visible: false }
@@ -32,7 +34,7 @@ class SidebarNav extends React.Component {
           name='signal'
           className="signal"
           />
-        <h1 className="navbarOrgName">United Relief</h1>
+        <img className="navbarOrgName"src={UnitedReliefLogo}/>
         <div>
         <Button.Group className="menuButton">
           <Button inverted disabled={visible} onClick={this.handleShowClick}>
@@ -96,6 +98,7 @@ class SidebarNav extends React.Component {
                      <Route path="/main/myprofile" component={MyProfile}/>
                     <Route path="/main/organizations" component={Organizations}/>
                     <Route path="/main/about" component={About}/>
+                    <Route path="/main/analysis" component={Analysis}/>
                    <Route path="/main" component={MapContainer}/>
                    </Switch>
                  </Segment>

@@ -19,17 +19,41 @@
   margin-top: 10px;
 }
 
-.column {
-    width: 40% !important;
+ .column {
+  }
+
+
+  #login {
+    width: 600px;
+    height: 100px;
+    padding: 30px;
+    left: 400px;
+    top: 60px;
+    opacity: 0.95;
+  }
+
+  #loginTitle {
+
+  }
+
+  #signup {
+    position: absolute;
+    right: 610px;
+    top: 50px;
+    margin-left: 50px;
+    width: 350px;
+  }
+
+  #signupHeader {
+    width: 100% !important;
     margin-top: 10% !important;
     padding: 18px 21px 31px 21px;
-    background-color: rgba(211, 171, 171,0.87);
+    background-color: rgba(91, 14, 211,0.57);
     border-radius: 15px;
-  }
-  .ui.center.aligned.header {
     color: white;
     font-family: 'Cedarville Cursive';
     font-size: 34px;
+
   }
 
   .ui.fluid.button {
@@ -40,17 +64,17 @@
     margin-bottom: 12px;
   }
 
-  .usernameInput {
-    width: 100%;
-  }
+    /* .usernameInput {
+      width: 100%;
+    } */
 
   .ui.button {
     color: #780738
   }
-
+/*
   .ui.grid {
     margin-top: 0 !important;
-  }
+  } */
 
   #mainTop {
     background-color: #0b98de;
@@ -59,10 +83,10 @@
   .navbarOrgName {
     position: relative;
     text-align: center;
-    font-family: 'Luckiest Guy', cursive;
     font-size: 40px;
-    margin-top: inherit;
-    top: 24px;
+    top: 16px;
+    width: 300px;
+    left: 530px;
   }
 
   #aboutPageText h1 {

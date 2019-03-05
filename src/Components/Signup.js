@@ -13,11 +13,11 @@ render() {
         <source src={loginVid} type="video/mp4" />
       </video>
 
-    <div className='login-page'>
+    <div className='login-page' id="signup">
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' textAlign='center'>
-                 Signup
+              <Header as='h2' textAlign='center' >
+                 <h4 id="signupHeader">Signup</h4>
               </Header>
               <Form>
                 <Segment stacked>
