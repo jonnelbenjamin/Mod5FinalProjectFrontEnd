@@ -93,6 +93,8 @@ const serviceToOrganizationReducer = (state = [], action) => {
       return action
     case "UPDATE_ORGANIZATION_NEED":
       return action.data
+    case "GO_WITH_ORGANIZATION":
+      return action.data
     default:
       return state
   }

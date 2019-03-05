@@ -219,6 +219,7 @@ const loggedIn = (user) =>  {
             donation_amount: donationAmount,
             donation_service: true,
             direct_service: false,
+            number_of_days_going: null,
             organization_id: orgId
           })
           }).then(res => res.json())
@@ -253,6 +254,31 @@ const loggedIn = (user) =>  {
          return { type: "UPDATE_ORGANIZATION_NEED", data }
        }
 
+       const goingWithOrganization = (numberOfDays, orgId) => {
+         let token = localStorage.getItem('token')
+         return (dispatch) => {
+           
+            fetch('http://localhost:3000/user_organizations/go', {
+             method:"POST",
+             headers: {
+               "Authentication": `Bearer ${token}`,
+               "Content-type":"application/json",
+             },
+             body: JSON.stringify({
+               donation_amount: null,
+               donation_service: false,
+               direct_service: true,
+               number_of_days_going: numberOfDays,
+               organization_id: orgId
+             })
+           })
+             .then(res => res.json())
+             .then(data => dispatch(goWithOrganization(data)))
+}}
+
+const goWithOrganization = (data) => {
+  return { type: "GO_WITH_ORGANIZATION", data}
+}
 
 
-export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, fetchingMyLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, givingToOrganization, stayLoggedInOnRefresh}
+export {fetchingDisasters, fetchingLocations, fetchingOrganizations, signedUp, signingUp, loggedIn, loggingIn, loggingOut, AddingToFollowLocation, deletingFromFollowedLocations, fetchingMyLocations, AddingToFollowOrganization, deletingFromFollowedOrganizations, fetchingMyOrganizations, givingToOrganization, goingWithOrganization, stayLoggedInOnRefresh}

@@ -1,7 +1,7 @@
 import React from 'react'
-import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations, givingToOrganization} from '../Redux/actions'
+import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations, givingToOrganization, goingWithOrganization} from '../Redux/actions'
 import { connect } from 'react-redux'
-import {Modal, Header} from 'semantic-ui-react'
+import {Modal, Header, Button} from 'semantic-ui-react'
 
 
 
@@ -67,7 +67,16 @@ class AreaInfo extends React.Component {
     this.props.givingToOrganization(amount, orgId)
     let newAmount = parseInt(document.getElementById('financialNeed').innerText.split('$')[1]) - amount
     document.getElementById('financialNeed').innerText = `Financial Need: $${newAmount}`
+  }
 
+  goToArea = () => {
+    console.log('hit go, collect $200')
+    console.log(this.state.goLength)
+    
+    let orgId = this.state.orgInfo.id
+    let lengthOfDays = parseInt(this.state.goLength)
+
+    this.props.goingWithOrganization(lengthOfDays, orgId)
 
   }
 
@@ -76,9 +85,16 @@ class AreaInfo extends React.Component {
       <div>
       <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
       <h2>Location Information:</h2>
-      <h3>Name: {this.state.locationInfo.name} <button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
+      <h3>Name: {this.state.locationInfo.name} </h3><button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
       <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button>
-      <button>Go</button></h3>
+      <Modal id="goModal" trigger={<button>Go</button>} centered={false} closeIcon={true}>
+      <Modal.Header>How Long?</Modal.Header>
+      <Modal.Content><div><input type="number" name="goLength" placeholder="# of days" id="daysGoing" onChange={this.changeAmount}/>
+      <Button
+      content="Submit"
+      onClick={this.goToArea}
+      /></div></Modal.Content>
+      </Modal>
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>
       <h3>Description: {this.state.locationInfo.description}</h3>
       <h2>Organizations Information</h2>
@@ -101,23 +117,23 @@ class AreaInfo extends React.Component {
       <div class="six wide field">
       <label>Expiration</label>
       <div class="two fields">
-        <div class="field">
-          <select class="ui fluid search dropdown" name="card[expire-month]">
-            <option value="">Month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-        </div>
+                                  <div class="field">
+                                    <select class="ui fluid search dropdown" name="card[expire-month]">
+                                      <option value="">Month</option>
+                                      <option value="1">January</option>
+                                      <option value="2">February</option>
+                                      <option value="3">March</option>
+                                      <option value="4">April</option>
+                                      <option value="5">May</option>
+                                      <option value="6">June</option>
+                                      <option value="7">July</option>
+                                      <option value="8">August</option>
+                                      <option value="9">September</option>
+                                      <option value="10">October</option>
+                                      <option value="11">November</option>
+                                      <option value="12">December</option>
+                                    </select>
+                                  </div>
         <div class="field">
           <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year" id="givingAmount"/>
         </div>
@@ -153,7 +169,8 @@ const mapDispatchToProps = dispatch => {
     addingToFollowOrganization: (userId, orgId) => {dispatch(AddingToFollowOrganization(userId, orgId))},
     addingToFollowLocation: (userId, locationId) => {dispatch(AddingToFollowLocation(userId, locationId))},
     deletingFromFollowedLocations: (locationId) => {dispatch(deletingFromFollowedLocations(locationId))},
-    givingToOrganization: (amount, orgId) => {dispatch(givingToOrganization(amount, orgId))}
+    givingToOrganization: (amount, orgId) => {dispatch(givingToOrganization(amount, orgId))},
+    goingWithOrganization: (lengthOfDays,orgId) => {dispatch(goingWithOrganization(lengthOfDays, orgId))}
   }
 }
 
