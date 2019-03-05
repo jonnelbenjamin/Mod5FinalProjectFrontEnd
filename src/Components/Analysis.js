@@ -29,7 +29,7 @@ class Analysis extends React.Component {
        // Ajax calls here
        this.setState({
          pieChartData:{
-           labels: ['Iran', 'China', 'India', 'Japan', 'Philippines', 'Senegal', 'Venezuela', 'Mexico', 'Indonesia', 'Somalia'],
+           labels: ['Iran', 'China', 'India', 'Japan', 'Philippines', 'Senegal', 'Venezuela', 'Mexico', 'Indonesia', 'Somalia', 'Yemen', 'Mozambique', 'Kazakhstan', 'Papua New Guinea', 'Libya'],
            datasets:[
              {
                label:'Country GDP',
@@ -43,7 +43,12 @@ class Analysis extends React.Component {
                  482400000000,
                  1150000000000,
                  1016000000000,
-                 7369000000
+                 7369000000,
+                 18210000000,
+                 12330000000,
+                 159400000000,
+                 21090000000,
+                 50980000000
                ],
                backgroundColor:[
                  'rgba(255, 99, 132, 0.6)',
@@ -52,7 +57,12 @@ class Analysis extends React.Component {
                  'rgba(75, 192, 192, 0.6)',
                  'rgba(153, 102, 255, 0.6)',
                  'rgba(255, 159, 64, 0.6)',
-                 'rgba(255, 99, 132, 0.6)'
+                 'rgba(185, 99, 132, 0.6)',
+                 'rgba(235, 9, 162, 0.6)',
+                 'rgba(252, 79, 12, 0.6)',
+                 'rgba(215, 99, 132, 0.6)',
+                 'rgba(155, 99, 199, 0.6)',
+                 'rgba(105, 40, 82, 0.6)',
                ]}]}});}
 
       getBarData(){

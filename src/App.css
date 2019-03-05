@@ -101,13 +101,22 @@
   }
 
   #areaInfo {
-    position: fixed;
-    bottom: 0px;
-    /* height: 200px;
-    padding: 100px;
-    width: 100%; */
+    position: relative;
+    bottom: 20px;
+    height: 200px;
     text-align: center;
 
+  }
+
+  #segment {
+    position: absolute;
+    top: 415px;
+    left: 50px;
+    right: 24px;
+    margin-top: 30px;
+    padding-top: 50px;
+    height: 160px;
+    z-index: 20;
   }
 
   .socialMediaButtons {

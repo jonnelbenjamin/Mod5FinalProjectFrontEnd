@@ -16,7 +16,9 @@ class AreaInfo extends React.Component {
   }
 
   findAreaInfo = () => {
+    
     let locationName = this.props.selectedPlace.name
+
     this.props.disasters.find((disaster) => {
       if (disaster.location.name === locationName) {
         this.setState({
@@ -24,6 +26,7 @@ class AreaInfo extends React.Component {
           locationInfo: disaster.location,
           orgInfo: disaster.organizations[0]
         })
+
       }
     })
   }

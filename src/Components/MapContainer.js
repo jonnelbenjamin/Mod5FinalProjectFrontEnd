@@ -14,11 +14,7 @@ const mapStyles = {
   paddingBottom: '600px'
 };
 
-const modalStyles = {
-  position: 'absolute',
-  right: '500px'
 
-}
 
 export class MapContainer extends Component {
 
@@ -89,7 +85,7 @@ export class MapContainer extends Component {
           </InfoWindow>
       </Map>
       <div>
-    {this.state.showingInfoWindow === false ? null : <Segment raised style={modalStyles}><AreaInfo
+    {this.state.showingInfoWindow === false ? null : <Segment raised  id="segment"><AreaInfo
     selectedPlace={this.state.selectedPlace}/></Segment>}
     </div>
       </div>
