@@ -72,7 +72,7 @@ class AreaInfo extends React.Component {
   goToArea = () => {
     console.log('hit go, collect $200')
     console.log(this.state.goLength)
-    
+
     let orgId = this.state.orgInfo.id
     let lengthOfDays = parseInt(this.state.goLength)
 
@@ -82,7 +82,7 @@ class AreaInfo extends React.Component {
 
   render(){
     return (
-      <div>
+      <div id="areaInfo">
       <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
       <h2>Location Information:</h2>
       <h3>Name: {this.state.locationInfo.name} </h3><button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
