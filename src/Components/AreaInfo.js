@@ -5,6 +5,7 @@ import {Modal, Header, Button} from 'semantic-ui-react'
 
 
 
+
 class AreaInfo extends React.Component {
 
   state = {
@@ -16,7 +17,7 @@ class AreaInfo extends React.Component {
   }
 
   findAreaInfo = () => {
-    
+
     let locationName = this.props.selectedPlace.name
 
     this.props.disasters.find((disaster) => {
@@ -138,7 +139,7 @@ class AreaInfo extends React.Component {
                                     </select>
                                   </div>
         <div class="field">
-          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year" id="givingAmount"/>
+          <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year" required="true"id="givingAmount"/>
         </div>
       </div>
     </div>

@@ -23,6 +23,7 @@ class Analysis extends React.Component {
      componentWillMount(){
        this.getPieData();
        this.getBarData();
+       this.getLineData();
      }
 
      getPieData(){
@@ -91,6 +92,46 @@ class Analysis extends React.Component {
                   'rgba(255, 99, 132, 0.6)'
                 ]}]}});
       }
+
+      getLineData(){
+        this.setState({
+          lineChartData:{
+            labels: ['Iran', 'China', 'India', 'Japan', 'Philippines', 'Senegal', 'Venezuela', 'Mexico', 'Indonesia', 'Somalia', 'Yemen', 'Mozambique', 'Kazakhstan', 'Papua New Guinea', 'Libya'],
+            datasets:[
+              {
+                label:'Donations $',
+                data:[
+                  43951,
+                  12240,
+                  25970,
+                  48720,
+                  31360,
+                  16370,
+                  48240,
+                  1150,
+                  10160,
+                  7369,
+                  18210,
+                  12330,
+                  15940,
+                  2109,
+                  5098
+                ],
+                backgroundColor:[
+                  'rgba(255, 99, 132, 0.6)',
+                  'rgba(54, 162, 235, 0.6)',
+                  'rgba(255, 206, 86, 0.6)',
+                  'rgba(75, 192, 192, 0.6)',
+                  'rgba(153, 102, 255, 0.6)',
+                  'rgba(255, 159, 64, 0.6)',
+                  'rgba(185, 99, 132, 0.6)',
+                  'rgba(235, 9, 162, 0.6)',
+                  'rgba(252, 79, 12, 0.6)',
+                  'rgba(215, 99, 132, 0.6)',
+                  'rgba(155, 99, 199, 0.6)',
+                  'rgba(105, 40, 82, 0.6)',
+                ]}]}});
+      }
 render(){
   return(
     <div className="charts">
@@ -129,11 +170,11 @@ render(){
 
          <Line
          id={'chart3'}
-           data={this.state.chartData}
+           data={this.state.lineChartData}
            options={{
              title:{
                display:this.props.displayTitle,
-               text:'Largest Cities In '+this.props.location,
+               text:'Distribution of Service',
                fontSize:25
              },
              legend:{

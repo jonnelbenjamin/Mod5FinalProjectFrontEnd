@@ -47,11 +47,11 @@ class SidebarNav extends React.Component {
             Menu
           </Button>
         </Button.Group>
-   <Button circular color='facebook' icon='facebook' className="socialMediaButtons"/>
-   <Button circular color='twitter' icon='twitter' className="socialMediaButtons"/>
-   <Button circular color='linkedin' icon='linkedin' className="socialMediaButtons"/>
-   <Button circular color='google plus' icon='google plus' className="socialMediaButtons"/>
-   <Button circular color='instagram' icon='instagram' className="socialMediaButtons"/>
+   <Button circular color='facebook' href='https://www.facebook.com/'icon='facebook' className="socialMediaButtons"/>
+   <Button circular color='twitter' href='https://www.twitter.com/'icon='twitter' className="socialMediaButtons"/>
+   <Button circular color='linkedin' href='https://www.linkedin.com/'icon='linkedin' className="socialMediaButtons"/>
+   <Button circular color='google plus' href='https://www.googleplus.com/'icon='google plus' className="socialMediaButtons"/>
+   <Button circular color='instagram' href='https://www.instagram.com/'icon='instagram' className="socialMediaButtons"/>
 
    </div>
  </div>

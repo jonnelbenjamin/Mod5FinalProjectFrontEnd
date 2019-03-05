@@ -108,7 +108,7 @@
 
   }
 
-  #segment {
+  /* #segment {
     position: absolute;
     top: 415px;
     left: 50px;
@@ -117,7 +117,7 @@
     padding-top: 50px;
     height: 160px;
     z-index: 20;
-  }
+  } */
 
   .socialMediaButtons {
     position: relative;
