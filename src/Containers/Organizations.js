@@ -23,6 +23,7 @@ class Organizations extends React.Component {
         relaxed columns={6}
         >
         <OrgInfo
+        image={organization.image}
         id={organization.id}
         name={organization.name}
         description={organization.description}

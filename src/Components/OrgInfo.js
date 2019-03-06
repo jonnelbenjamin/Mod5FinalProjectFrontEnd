@@ -12,7 +12,7 @@ class OrgInfo extends React.Component {
     // Need to fix this problem above as is found on MyOrgs.js
     let userId = 1
     let orgId = idOrg
-    
+
     this.props.addingToFollowOrganization(userId, orgId)
 
     console.log(userId)
@@ -34,6 +34,7 @@ class OrgInfo extends React.Component {
           column={2}
           raised
           >
+          <img src={this.props.image}></img>
           <h1>{this.props.name}</h1>
           <h2>{this.props.description}</h2>
           <h3>{"Financial Need: $" + this.props.financialNeed}</h3>

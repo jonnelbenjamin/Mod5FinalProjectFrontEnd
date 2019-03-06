@@ -3,9 +3,6 @@ import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, Adding
 import { connect } from 'react-redux'
 import {Modal, Header, Button} from 'semantic-ui-react'
 
-
-
-
 class AreaInfo extends React.Component {
 
   state = {
@@ -36,12 +33,10 @@ class AreaInfo extends React.Component {
     // let userId = this.props.currentUser.id
     // Need to fix this problem above as is found on MyOrgs.js
     let userId = 1
-    let orgId = idOrg
 
-    this.props.addingToFollowOrganization(userId, orgId)
+    this.props.addingToFollowOrganization(userId, idOrg)
 
     console.log(userId)
-    console.log(orgId)
   }
 
   followLocations = (locationId) => {
@@ -74,9 +69,7 @@ class AreaInfo extends React.Component {
   }
 
   goToArea = () => {
-    console.log('hit go, collect $200')
-    console.log(this.state.goLength)
-
+  
     let orgId = this.state.orgInfo.id
     let lengthOfDays = parseInt(this.state.goLength)
 

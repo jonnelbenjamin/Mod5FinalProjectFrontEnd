@@ -27,6 +27,7 @@ class MyOrgs extends React.Component {
 
         {this.props.followedOrganizations.map(organization =>
           <OrgInfo
+          image={organization.organizationImage}
           id={organization.organizationId}
           name={organization.organizationName}
           description={organization.organizationDescription}
