@@ -24,16 +24,17 @@ class MyLocations extends React.Component {
         My Locations
         </Header>
         </Divider>
-
+        <div className="orgCards">
           {this.props.followedLocations.map(location =>
           <LocationInfo
           id={location.locationId}
           name={location.locationName}
           gdp={location.locationGDP}
           description={location.locationDescription}
+          image={location.locationImage}
           />
           )}
-
+        </div>
         </React.Fragment>
         </div>
     )

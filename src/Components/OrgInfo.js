@@ -21,8 +21,8 @@ class OrgInfo extends React.Component {
 
   handleDelete = (e, orgId) => {
     this.props.deletingFromFollowedOrganizations(orgId)
-debugger
-    e.target.parentElement.parentElement.innerHTML = ""
+
+    e.target.parentElement.parentElement.parentElement.innerHTML = ""
   }
 
   render(){
@@ -31,9 +31,8 @@ debugger
         <div
           id={this.props.id}
           >
-        
           <img src={this.props.image}></img>
-
+          <div className="cardStuff">
           <h1 className="orgHeaderName">{this.props.name}</h1>
           <h4>{this.props.description}</h4>
           <h3>{"Financial Need: $" + this.props.financialNeed}</h3>
@@ -42,6 +41,7 @@ debugger
           <div class="or"></div>
           <button className="ui toggle button" onClick={(e) => this.handleDelete(e, this.props.idOrg)}>Unfollow</button>
           </div>
+        </div>
         </div>
       </div>
 

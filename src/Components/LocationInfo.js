@@ -13,29 +13,24 @@ class LocationInfo extends React.Component {
 
   unfollowLocation = (e, locationId) => {
     this.props.deletingFromFollowedLocations(locationId)
-
-    e.target.offsetParent.innerHTML = ""
+    e.target.parentElement.parentElement.parentElement.innerHTML = ""
   }
 
 
   render(){
 return(
-  <div>
-    <Card
-      id={this.props.id}
-      centered
-      column={2}
-      raised
-      >
-      <h1>{this.props.name}</h1>
-      <h2>{this.props.description}</h2>
+  <div className="cardInfo" id={this.props.id}>
+      <img src={this.props.image}></img>
+      <div className="cardStuff">
+      <h1 className="orgHeaderName">{this.props.name}</h1>
+      <h4>{this.props.description}</h4>
       <h3>{"Country GDP: $" + this.props.gdp}</h3>
       <div class="ui buttons">
       <button className="ui green button" onClick={() => this.followLocations(this.props.id)}>Follow</button>
       <div class="or"></div>
       <button className="ui toggle button" onClick={(e) => this.unfollowLocation(e, this.props.id)}>Unfollow</button>
       </div>
-    </Card>
+      </div>
   </div>
 )
 }

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Sidebar from './Containers/Sidebar'
-import MapContainer from './Components/MapContainer'
 import Organizations from './Containers/Organizations'
 import {stayLoggedInOnRefresh} from './Redux/actions'
 
