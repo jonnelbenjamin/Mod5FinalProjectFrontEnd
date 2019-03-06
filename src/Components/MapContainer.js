@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import {ReactDOM} from 'react-dom/server'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
 import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'
@@ -88,6 +88,7 @@ export class MapContainer extends Component {
     {this.state.showingInfoWindow === false ? null : <Segment raised  id="segment"><AreaInfo
     selectedPlace={this.state.selectedPlace}/></Segment>}
     </div>
+    
       </div>
     )
   }

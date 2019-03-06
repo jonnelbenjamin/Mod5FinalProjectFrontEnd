@@ -30,9 +30,10 @@ class SidebarNav extends React.Component {
     return (
       <div>
       <div id="mainTop">
+
         <Icon
-          name='signal'
-          className="signal"
+          name='rss square'
+          className="rss"
           />
         <img className="navbarOrgName"src={UnitedReliefLogo}/>
         <div>
@@ -47,11 +48,9 @@ class SidebarNav extends React.Component {
             Menu
           </Button>
         </Button.Group>
-   <Button circular color='facebook' href='https://www.facebook.com/'icon='facebook' className="socialMediaButtons"/>
-   <Button circular color='twitter' href='https://www.twitter.com/'icon='twitter' className="socialMediaButtons"/>
-   <Button circular color='linkedin' href='https://www.linkedin.com/'icon='linkedin' className="socialMediaButtons"/>
-   <Button circular color='google plus' href='https://www.googleplus.com/'icon='google plus' className="socialMediaButtons"/>
-   <Button circular color='instagram' href='https://www.instagram.com/'icon='instagram' className="socialMediaButtons"/>
+        <div class="earth">
+          <div></div>
+        </div>
 
    </div>
  </div>
@@ -90,6 +89,12 @@ class SidebarNav extends React.Component {
               <Icon name='sign-out' />
               Sign Out
             </Menu.Item></Link>
+            <Button circular color='facebook' href='https://www.facebook.com/'icon='facebook' className="socialMediaButtons"/>
+            <Button circular color='twitter' href='https://www.twitter.com/'icon='twitter' className="socialMediaButtons"/>
+            <Button circular color='linkedin' href='https://www.linkedin.com/'icon='linkedin' className="socialMediaButtons"/>
+            <Button circular color='google plus' href='https://www.googleplus.com/'icon='google plus' className="socialMediaButtons"/>
+            <Button circular color='instagram' href='https://www.instagram.com/'icon='instagram' className="socialMediaButtons"/>
+
           </Sidebar>
           <Sidebar.Pusher>
                  <Segment basic id="mapSegment">

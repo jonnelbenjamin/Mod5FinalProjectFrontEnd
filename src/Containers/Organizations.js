@@ -12,16 +12,11 @@ class Organizations extends React.Component {
 
   render(){
     return(
-      <div>
-        <Grid
-          centered
-          >
+      <div className="orgCards">
+        
     {this.props.organizations.map(organization =>
 
-      <Grid.Column
-        width={4}
-        relaxed columns={6}
-        >
+
         <OrgInfo
         image={organization.image}
         id={organization.id}
@@ -29,9 +24,8 @@ class Organizations extends React.Component {
         description={organization.description}
         financialNeed={organization.financial_need}
         />
-    </Grid.Column>
+
     )}
-    </Grid>
     </div>
   )
   }

@@ -19,11 +19,11 @@ class MyOrgs extends React.Component {
       <React.Fragment>
       <Divider horizontal>
       <Header as='h4'>
-        <Icon name='tag' />
-        My Organizations
-        </Header>
+      <Icon name='tag' />
+      My Organizations
+      </Header>
         </Divider>
-
+        <div className="orgCards">
 
         {this.props.followedOrganizations.map(organization =>
           <OrgInfo
@@ -34,6 +34,7 @@ class MyOrgs extends React.Component {
           financialNeed={organization.organizationFinancialNeed}
           />)
         }
+        </div>
         </React.Fragment>
         </div>
     )
