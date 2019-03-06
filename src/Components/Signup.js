@@ -9,8 +9,8 @@ class Signup extends Component {
 render() {
   return (
     <div>
-      <video id="video"loop muted autoplay playsinline poster={loginVid}>
-        <source src={loginVid} type="video/mp4" />
+      <video id="video"loop muted autoplay playsinline poster={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'}>
+        <source src={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'} type="video/mp4" />
       </video>
 
     <div className='login-page' id="signup">

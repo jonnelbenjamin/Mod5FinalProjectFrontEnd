@@ -27,9 +27,9 @@
     width: 600px;
     height: 100px;
     padding: 30px;
-    left: 400px;
-    top: 60px;
-    opacity: 0.95;
+    left: 420px;
+    top: 220px;
+    opacity: 0.9;
   }
 
   #loginTitle {
@@ -38,10 +38,11 @@
 
   #signup {
     position: absolute;
-    right: 610px;
+    right: 545px;
     top: 50px;
     margin-left: 50px;
     width: 350px;
+    opacity: .85;
   }
 
   #signupHeader {
@@ -92,7 +93,16 @@
   #aboutPageText h1 {
     position: relative;
     font-family: 'Luckiest Guy', cursive;
-    font-size: 20px;
+    font-size: 35px;
+    text-align: center;
+  }
+
+  #aboutBackground {
+    position: fixed;
+    background-image: url('https://cdn.pixabay.com/photo/2016/04/15/04/02/water-1330252__340.jpg');
+    background-size: cover;
+    padding-left: 400px;
+    padding-right: 400px;
   }
 
    #mapSegment{
