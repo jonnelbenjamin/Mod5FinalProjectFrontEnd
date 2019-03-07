@@ -257,7 +257,7 @@ const loggedIn = (user) =>  {
        const goingWithOrganization = (numberOfDays, orgId) => {
          let token = localStorage.getItem('token')
          return (dispatch) => {
-           
+
             fetch('http://localhost:3000/user_organizations/go', {
              method:"POST",
              headers: {
@@ -274,6 +274,7 @@ const loggedIn = (user) =>  {
            })
              .then(res => res.json())
              .then(data => dispatch(goWithOrganization(data)))
+             .then(alert('Application accepted! Your flight ticket has been purchased. Security will intercept you on the ground with further instructions.'))
 }}
 
 const goWithOrganization = (data) => {
