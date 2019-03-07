@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Button } from 'semantic-ui-react'
 import {AddingToFollowOrganization, deletingFromFollowedOrganizations} from '../Redux/actions'
 
 class OrgInfo extends React.Component {

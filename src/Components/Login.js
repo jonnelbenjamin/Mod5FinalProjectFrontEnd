@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Form, Grid, Header, Icon, Message, Segment, Container, Divider } from 'semantic-ui-react'
+import { Button, Form, Grid, Segment, Divider } from 'semantic-ui-react'
 import {Link, withRouter} from 'react-router-dom'
 import { loggingIn } from '../Redux/actions'
-import loginVid from '../ezgif.com-gif-maker.gif'
 import { connect } from 'react-redux'
 
 

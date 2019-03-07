@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import {ReactDOM} from 'react-dom/server'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment} from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
 import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {AddingToFollowLocation, deletingFromFollowedLocations} from '../Redux/actions'
-import { Card, Button } from 'semantic-ui-react'
 
 class LocationInfo extends React.Component {
 
@@ -20,7 +19,7 @@ class LocationInfo extends React.Component {
   render(){
 return(
   <div className="cardInfo" id={this.props.id}>
-      <img src={this.props.image}></img>
+      <img src={this.props.image} alt=""></img>
       <div className="cardStuff">
       <h1 className="orgHeaderName">{this.props.name}</h1>
       <h4>{this.props.description}</h4>

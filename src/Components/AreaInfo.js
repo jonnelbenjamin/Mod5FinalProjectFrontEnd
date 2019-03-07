@@ -1,7 +1,7 @@
 import React from 'react'
 import {fetchingDisasters, fetchingLocations, AddingToFollowOrganization, AddingToFollowLocation, deletingFromFollowedLocations, givingToOrganization, goingWithOrganization} from '../Redux/actions'
 import { connect } from 'react-redux'
-import {Modal, Header, Button} from 'semantic-ui-react'
+import {Modal, Button} from 'semantic-ui-react'
 
 class AreaInfo extends React.Component {
 
@@ -104,16 +104,16 @@ class AreaInfo extends React.Component {
       <Modal.Content>
       <Modal.Header>Your donation is tax-deductible</Modal.Header>
 
-      <div class="fields">
-    <div class="seven wide field">
+      <div>
+    <div>
       <label>Card Number</label>
       <input type="text" name="card[number]" maxlength="16" placeholder="Card #"/>
     </div>
-    <div class="three wide field">
+    <div>
       <label>CVC</label>
       <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC"/>
     </div>
-      <div class="six wide field">
+      <div>
       <label>Expiration</label>
       <div class="two fields">
                                   <div class="field">

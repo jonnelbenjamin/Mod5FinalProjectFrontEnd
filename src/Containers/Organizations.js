@@ -2,7 +2,6 @@ import React from 'react'
 import {fetchingOrganizations} from '../Redux/actions'
 import { connect } from 'react-redux'
 import OrgInfo from '../Components/OrgInfo'
-import {Grid} from 'semantic-ui-react'
 
 class Organizations extends React.Component {
 
@@ -13,7 +12,7 @@ class Organizations extends React.Component {
   render(){
     return(
       <div className="orgCards">
-        
+
     {this.props.organizations.map(organization =>
 
 
