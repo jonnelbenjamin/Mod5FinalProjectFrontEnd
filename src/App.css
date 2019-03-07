@@ -114,21 +114,29 @@
     position: relative;
     bottom: 20px;
     height: 200px;
-    text-align: center;
+    z-index: 99990;
 
+  }
+
+  .areaInfoImage {
+    width: 20vw;
+    float: left;
   }
 
   #segment {
     position: absolute;
-    top: 415px;
-    left: 50px;
+    top: 360px;
+    left: 410px;
     right: 24px;
+    width: 940px;
+    height: 240px !important;
     margin-top: 30px;
     padding-top: 50px;
     height: 160px;
-    z-index: 20;
+    z-index: 9990;
     max-height: 220px;
     overflow-y: scroll;
+    border-color: black;
   }
 
   .socialMediaButtons {
@@ -210,4 +218,10 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.widget {
+  z-index: 99;
+  bottom: -200px;
+  background-color: white
 }

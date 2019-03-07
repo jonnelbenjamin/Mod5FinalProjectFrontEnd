@@ -69,7 +69,7 @@ class AreaInfo extends React.Component {
   }
 
   goToArea = () => {
-  
+
     let orgId = this.state.orgInfo.id
     let lengthOfDays = parseInt(this.state.goLength)
 
@@ -81,6 +81,7 @@ class AreaInfo extends React.Component {
     return (
       <div id="areaInfo">
       <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
+      <img className="areaInfoImage"src={this.state.locationInfo.image}></img>
       <h2>Location Information:</h2>
       <h3>Name: {this.state.locationInfo.name} </h3><button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
       <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button>
@@ -94,8 +95,9 @@ class AreaInfo extends React.Component {
       </Modal>
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>
       <h3>Description: {this.state.locationInfo.description}</h3>
-      <h2>Organizations Information</h2>
-      <h3>Name: {this.state.orgInfo.name} <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button></h3>
+      <h2>Organization Information</h2>
+      <img className="areaInfoImage"src={this.state.orgInfo.image}></img>
+      <h3>Name: {this.state.orgInfo.name}</h3> <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button>
       <h3 id="financialNeed">Financial Need: ${this.state.orgInfo.financial_need}</h3>
       <Modal id="donationModal"trigger={<button>Give</button>} centered={false} closeIcon={true}>
       <Modal.Header>How Much Would You Like To Give?</Modal.Header>

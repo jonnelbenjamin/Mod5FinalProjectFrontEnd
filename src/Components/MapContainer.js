@@ -7,6 +7,7 @@ import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'
 import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
 import AreaInfo from './AreaInfo'
+import Iframe from 'react-iframe'
 
 const mapStyles = {
   width: '100%',
@@ -60,6 +61,16 @@ export class MapContainer extends Component {
     return (
 
       <div>
+        <div className="iFrameBackground">
+          <Iframe url="https://www.fema.gov/help/widgets/severe_weather.html"
+          width="380px"
+          height="430px"
+          id="myId"
+          className="widget"
+          display="initial"
+          position="absolute"
+          allowFullScreen/>
+        </div>
       <Map
         google={this.props.google}
         zoom={2.5}
@@ -88,7 +99,7 @@ export class MapContainer extends Component {
     {this.state.showingInfoWindow === false ? null : <Segment raised  id="segment"><AreaInfo
     selectedPlace={this.state.selectedPlace}/></Segment>}
     </div>
-    
+
       </div>
     )
   }
