@@ -5,7 +5,6 @@ import {AddingToFollowOrganization, deletingFromFollowedOrganizations} from '../
 class OrgInfo extends React.Component {
 
 
-
   followOrganizations = (idOrg) => {
     // let userId = this.props.currentUser.id
     // Need to fix this problem above as is found on MyOrgs.js

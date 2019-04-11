@@ -63,8 +63,8 @@ const loggingIn = (userObj) => {
       })
       .then(r => r.json())
       .then(user_info => {
+
         dispatch(loggedIn(user_info))
-        console.log(user_info)
       })
     }
   }
@@ -157,6 +157,7 @@ const loggedIn = (user) =>  {
   }
 
   const AddingToFollowLocation = (userId, locationId) => {
+
     return (dispatch) => {
       let token = localStorage.getItem('token')
 
@@ -185,7 +186,7 @@ const loggedIn = (user) =>  {
           method: "DELETE"
         }
       ).then(res => res.json())
-      .then(location => dispatch(deleteFromFollowedOrganizations(location)))
+      .then(location => dispatch(deleteFromFollowedLocations(location)))
       }
     }
 
