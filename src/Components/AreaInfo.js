@@ -80,8 +80,8 @@ class AreaInfo extends React.Component {
   render(){
     return (
       <div id="areaInfo">
-      <h1>{this.state.areaInfo.active == false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
-      <img className="areaInfoImage"src={this.state.locationInfo.image}></img>
+      <h1>{this.state.areaInfo.active === false ? this.state.areaInfo.description + " hit the area" : "Warning: " + this.state.areaInfo.description + " in the area"}</h1>
+      <img className="areaInfoImage"src={this.state.locationInfo.image}alt=""></img>
       <h2>Location Information:</h2>
       <h3>Name: {this.state.locationInfo.name} </h3><button onClick={() => this.followLocations(this.state.locationInfo.id)}>Follow</button>
       <button onClick={() => this.unfollowLocation(this.state.locationInfo.id)}>Unfollow</button>
@@ -96,7 +96,7 @@ class AreaInfo extends React.Component {
       <h3>Country GDP: ${this.state.locationInfo.country_gdp}</h3>
       <h3>Description: {this.state.locationInfo.description}</h3>
       <h2>Organization Information</h2>
-      <img className="areaInfoImage"src={this.state.orgInfo.image}></img>
+      <img className="areaInfoImage"src={this.state.orgInfo.image} alt=""></img>
       <h3>Name: {this.state.orgInfo.name}</h3> <button onClick={() => this.followOrganizations(this.state.orgInfo.id)}>Follow</button>
       <h3 id="financialNeed">Financial Need: ${this.state.orgInfo.financial_need}</h3>
       <Modal id="donationModal"trigger={<button>Give</button>} centered={false} closeIcon={true}>
@@ -115,9 +115,9 @@ class AreaInfo extends React.Component {
     </div>
       <div>
       <label>Expiration</label>
-      <div class="two fields">
-                                  <div class="field">
-                                    <select class="ui fluid search dropdown" name="card[expire-month]">
+      <div className="two fields">
+                                  <div className="field">
+                                    <select className="ui fluid search dropdown" name="card[expire-month]">
                                       <option value="">Month</option>
                                       <option value="1">January</option>
                                       <option value="2">February</option>
@@ -133,16 +133,16 @@ class AreaInfo extends React.Component {
                                       <option value="12">December</option>
                                     </select>
                                   </div>
-        <div class="field">
+        <div className="field">
           <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year" required="true"id="givingAmount"/>
         </div>
       </div>
     </div>
     </div>
-      <div class="ui segment">
+      <div className="ui segment">
       <input type="text" name="amount" placeholder="Amount" onChange={this.changeAmount}/>
   </div>
-  <div class="ui button" tabindex="0" onClick={this.submitPayment}>Submit Payment</div>
+  <div className="ui button" tabindex="0" onClick={this.submitPayment}>Submit Payment</div>
       </Modal.Content>
       </Modal>
       <h3>Description: {this.state.orgInfo.description}</h3>

@@ -35,7 +35,7 @@ class SidebarNav extends React.Component {
           name='rss square'
           className="rss"
           />
-        <img className="navbarOrgName"src={UnitedReliefLogo}/>
+        <img className="navbarOrgName"src={UnitedReliefLogo} alt=""/>
         <div>
         <Button.Group className="menuButton">
           <Button inverted disabled={visible} onClick={this.handleShowClick}>
@@ -48,7 +48,7 @@ class SidebarNav extends React.Component {
             Menu
           </Button>
         </Button.Group>
-        <div class="earth">
+        <div className="earth">
           <div></div>
         </div>
 
@@ -65,27 +65,27 @@ class SidebarNav extends React.Component {
             visible={visible}
             width='thin'
           >
-            <Link to="/main/myprofile"><Menu.Item as='a'>
+            <Link to="/main/myprofile"><Menu.Item>
               <Icon name='address card outline' />
               My Profile
             </Menu.Item></Link>
-            <Link to="/main"><Menu.Item as='a'>
+            <Link to="/main"><Menu.Item>
               <Icon name='map' />
               Map
             </Menu.Item></Link>
-          <Link to="/main/organizations"><Menu.Item as='a'>
+          <Link to="/main/organizations"><Menu.Item>
               <Icon name='building' />
               Organizations
             </Menu.Item></Link>
-          <Link to="/main/analysis"><Menu.Item as='a'>
+          <Link to="/main/analysis"><Menu.Item>
               <Icon name='chart area' />
               Analysis
             </Menu.Item></Link>
-          <Link to="/main/about"><Menu.Item as='a'>
+          <Link to="/main/about"><Menu.Item>
               <Icon name='file alternate outline' />
               About
             </Menu.Item></Link>
-          <Link to="/login" onClick={this.handleLogout}><Menu.Item as='a'>
+          <Link to="/login" onClick={this.handleLogout}><Menu.Item>
               <Icon name='sign-out' />
               Sign Out
             </Menu.Item></Link>

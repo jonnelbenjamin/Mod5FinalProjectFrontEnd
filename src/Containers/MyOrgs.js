@@ -8,7 +8,6 @@ class MyOrgs extends React.Component {
 
   componentDidMount() {
     let userId = this.props.currentUser.id
-    // the above code for userId breaks for some reason! Fix it tomorrow! Also found in AreaInfo.js
     this.props.fetchingMyOrganizations(userId)
   }
   render() {
