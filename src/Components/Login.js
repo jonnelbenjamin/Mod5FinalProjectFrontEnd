@@ -27,7 +27,7 @@ class Login extends Component {
 render() {
   return (
     <div>
-      <video id="video"loop muted autoPlay playsInLine poster={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'}>
+      <video id="video"loop muted autoPlay playsInline poster={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'}>
         <source src={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'} type="video/mp4" />
       </video>
 

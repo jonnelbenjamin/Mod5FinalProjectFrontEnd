@@ -1,5 +1,8 @@
-import React from 'react'
+import React from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import { connect } from 'react-redux';
+import {fetchingOrganizations} from '../Redux/actions'
+
 
 
 
@@ -21,10 +24,13 @@ class Analysis extends React.Component {
      }
 
      componentWillMount(){
+       this.props.fetchingOrganizations()
        this.getPieData();
        this.getBarData();
        this.getLineData();
      }
+
+
 
      getPieData(){
        // Ajax calls here
@@ -67,6 +73,8 @@ class Analysis extends React.Component {
                ]}]}});}
 
       getBarData(){
+        let barLabels = this.props.organizations.map(org => console.log(org.name))
+        console.log(barLabels)
         this.setState({
           barChartData:{
             labels: ['Oxfam International', 'American Red Cross', 'USAID', 'Direct Relief', 'International Rescue Committee', "Samaritan's Purse", 'World Food Programme'],
@@ -189,4 +197,17 @@ render(){
 }
 }
 
-export default Analysis;
+const mapStateToProps = (state) => {
+  return {
+    organizations: state.organizations
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchingOrganizations: () => {dispatch(fetchingOrganizations())}
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Analysis);

@@ -24,9 +24,9 @@ return(
       <h1 className="orgHeaderName">{this.props.name}</h1>
       <h4>{this.props.description}</h4>
       <h3>{"Country GDP: $" + this.props.gdp}</h3>
-      <div class="ui buttons">
+      <div className="ui buttons">
       <button className="ui green button" onClick={() => this.followLocations(this.props.id)}>Follow</button>
-      <div class="or"></div>
+      <div className="or"></div>
       <button className="ui toggle button" onClick={(e) => this.unfollowLocation(e, this.props.id)}>Unfollow</button>
       </div>
       </div>
