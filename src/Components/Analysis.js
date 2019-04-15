@@ -1,7 +1,7 @@
 import React from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import { connect } from 'react-redux';
-import {fetchingOrganizations} from '../Redux/actions'
+import {fetchingOrganizations, fetchingLocations} from '../Redux/actions'
 
 
 
@@ -10,8 +10,6 @@ class Analysis extends React.Component {
   constructor(props){
       super(props);
       this.state = {
-        pieChartData:[],
-        barChartData: [],
         lineChartData: []
       }
     }
@@ -23,83 +21,14 @@ class Analysis extends React.Component {
        location:'City'
      }
 
-     componentWillMount(){
-       this.props.fetchingOrganizations()
-       this.getPieData();
-       this.getBarData();
+     componentDidMount(){
+       this.props.fetchingOrganizations();
+       this.props.fetchingLocations();
        this.getLineData();
      }
 
 
 
-     getPieData(){
-       // Ajax calls here
-       this.setState({
-         pieChartData:{
-           labels: ['Iran', 'China', 'India', 'Japan', 'Philippines', 'Senegal', 'Venezuela', 'Mexico', 'Indonesia', 'Somalia', 'Yemen', 'Mozambique', 'Kazakhstan', 'Papua New Guinea', 'Libya'],
-           datasets:[
-             {
-               label:'Country GDP',
-               data:[
-                 439510000000,
-                 12240000000000,
-                 2597000000000,
-                 4872000000000,
-                 313600000000,
-                 16370000000,
-                 482400000000,
-                 1150000000000,
-                 1016000000000,
-                 7369000000,
-                 18210000000,
-                 12330000000,
-                 159400000000,
-                 21090000000,
-                 50980000000
-               ],
-               backgroundColor:[
-                 'rgba(255, 99, 132, 0.6)',
-                 'rgba(54, 162, 235, 0.6)',
-                 'rgba(255, 206, 86, 0.6)',
-                 'rgba(75, 192, 192, 0.6)',
-                 'rgba(153, 102, 255, 0.6)',
-                 'rgba(255, 159, 64, 0.6)',
-                 'rgba(185, 99, 132, 0.6)',
-                 'rgba(235, 9, 162, 0.6)',
-                 'rgba(252, 79, 12, 0.6)',
-                 'rgba(215, 99, 132, 0.6)',
-                 'rgba(155, 99, 199, 0.6)',
-                 'rgba(105, 40, 82, 0.6)',
-               ]}]}});}
-
-      getBarData(){
-        let barLabels = this.props.organizations.map(org => console.log(org.name))
-        console.log(barLabels)
-        this.setState({
-          barChartData:{
-            labels: ['Oxfam International', 'American Red Cross', 'USAID', 'Direct Relief', 'International Rescue Committee', "Samaritan's Purse", 'World Food Programme'],
-            datasets:[
-              {
-                label:'Financial Need',
-                data:[
-                  465438293,
-                  675295265,
-                  584928572,
-                  456827590,
-                  527412852,
-                  554579236,
-                  393827646
-                ],
-                backgroundColor:[
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
-                  'rgba(255, 206, 86, 0.6)',
-                  'rgba(75, 192, 192, 0.6)',
-                  'rgba(153, 102, 255, 0.6)',
-                  'rgba(255, 159, 64, 0.6)',
-                  'rgba(255, 99, 132, 0.6)'
-                ]}]}});
-      }
 
       getLineData(){
         this.setState({
@@ -143,10 +72,30 @@ class Analysis extends React.Component {
 render(){
   return(
     <div className="charts">
-
              <Pie
               id={'chart1'}
-               data={this.state.pieChartData}
+              data={{
+                labels: this.props.locations.map(location => { return location.name}),
+                datasets: [
+                  { label:'Financial Need',
+                    data: this.props.locations.map(location => { return location.country_gdp}),
+                    backgroundColor:[
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                      'rgba(255, 206, 86, 0.6)',
+                      'rgba(75, 192, 192, 0.6)',
+                      'rgba(153, 102, 255, 0.6)',
+                      'rgba(255, 159, 64, 0.6)',
+                      'rgba(185, 99, 132, 0.6)',
+                      'rgba(235, 9, 162, 0.6)',
+                      'rgba(252, 79, 12, 0.6)',
+                      'rgba(215, 99, 132, 0.6)',
+                      'rgba(155, 99, 199, 0.6)',
+                      'rgba(105, 40, 82, 0.6)',
+
+                    ]}
+                ]
+                }}
                options={{
                  title:{
                    display:this.props.displayTitle,
@@ -162,7 +111,22 @@ render(){
 
          <Bar
          id={'chart2'}
-           data={this.state.barChartData}
+           data={{
+             labels: this.props.organizations.map(org => { return org.name}),
+             datasets: [
+               { label:'Financial Need',
+                 data: this.props.organizations.map(org => { return org.financial_need}),
+                 backgroundColor:[
+                   'rgba(255, 99, 132, 0.6)',
+                   'rgba(54, 162, 235, 0.6)',
+                   'rgba(255, 206, 86, 0.6)',
+                   'rgba(75, 192, 192, 0.6)',
+                   'rgba(153, 102, 255, 0.6)',
+                   'rgba(255, 159, 64, 0.6)',
+                   'rgba(114, 99, 132, 0.6)'
+                 ]}
+             ]
+             }}
            options={{
              title:{
                display:this.props.displayTitle,
@@ -199,13 +163,15 @@ render(){
 
 const mapStateToProps = (state) => {
   return {
-    organizations: state.organizations
+    organizations: state.organizations,
+    locations: state.locations
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchingOrganizations: () => {dispatch(fetchingOrganizations())}
+    fetchingOrganizations: () => {dispatch(fetchingOrganizations())},
+    fetchingLocations: () => {dispatch(fetchingLocations())}
   }
 }
 
