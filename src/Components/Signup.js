@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Icon, Segment } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import { signingUp } from '../Redux/actions'
+import { connect } from 'react-redux'
 
 
 
 class Signup extends Component {
+
+  state = {
+        email: "",
+        password: ""
+      };
+
+      handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+
+      handleSignUp = (e) => {
+        let newUser = this.state
+        debugger
+        this.props.signingUp(newUser)
+      }
+
 render() {
   return (
     <div>
-      <video id="video"loop muted autoplay playsinline poster={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'}>
+      <video id="video"loop muted autoPlay playsInline poster={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'}>
         <source src={'http://cdn.lowgif.com/full/11216b6363732104-hud-is-static.gif'} type="video/mp4" />
       </video>
 
     <div className='login-page' id="signup">
           <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' textAlign='center' >
+              <Header textAlign='center' >
                  <h4 id="signupHeader">Signup</h4>
               </Header>
               <Form>
@@ -25,12 +43,14 @@ render() {
                     name='email'
                     placeholder='Email'
                     type='email'
+                    onChange={this.handleChange}
                   />
                   <Form.Input
                     className='passwordInput'
                     name='password'
                     placeholder='Password'
                     type='password'
+                    onChange={this.handleChange}
                   />
                   <Form.Input
                     className='firstnameInput'
@@ -62,7 +82,7 @@ render() {
         <Icon name='arrow left' />
       </Button.Content>
     </Button></Link>
-                  <Button className="loginButton">
+  <Button className="loginButton" onClick={this.handleSignUp}>
                     Signup
                   </Button>
                 </Segment>
@@ -77,6 +97,10 @@ render() {
 }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+      signingUp: (newUser) => {dispatch(signingUp(newUser))}
+    }
+  }
 
-
-export default Signup;
+export default connect(null, mapDispatchToProps)(Signup);
