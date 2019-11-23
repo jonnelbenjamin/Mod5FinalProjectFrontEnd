@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
-// import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import React, { useState, useEffect } from 'react';
 import { Segment} from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
 import InfoWindow from './InfoWindow'
@@ -12,13 +11,22 @@ import Iframe from 'react-iframe'
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import * as parkDate from "./data/skateboard-parks.json";
 
-export default function App() {
+export const App = () => {
+
+  componentDidMount(){
+    this.props.fetchingDisasters()
+    this.props.fetchingLocations()
+    }
+
+
+
+
   const [viewport, setViewport] = useState({
-    latitude: 45.4211,
-    longitude: -75.6903,
-    width: "100vw",
-    height: "100vh",
-    zoom: 10
+    latitude: 18.448347,
+    longitude: -20.793440,
+    width: "98.8vw",
+    height: "82.5vh",
+    zoom: 1.5
   });
   const [selectedPark, setSelectedPark] = useState(null);
 
@@ -35,49 +43,42 @@ export default function App() {
     };
   }, []);
 
+ const onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })
+  }
+
   return (
     <div>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={APIkey}
-        mapStyle="mapbox://styles/mapbox/dark-v10"
+        mapStyle="mapbox://styles/mapbox/satellite-v9"
         onViewportChange={viewport => {
           setViewport(viewport);
         }}
       >
-        {parkDate.features.map(park => (
+
+
+
+        {this.props.disasters.map(disaster => (
           <Marker
-            key={park.properties.PARK_ID}
-            latitude={park.geometry.coordinates[1]}
-            longitude={park.geometry.coordinates[0]}
+            key={disaster.id}
+            active={disaster.active}
+            description={disaster.description}
+            name={disaster.location.name}
+            latitude={disaster['latitude']}
+            longitude={disaster['longitude']}
+            onClick={this.onMarkerClick}
           >
-            <button
-              className="marker-btn"
-              onClick={e => {
-                e.preventDefault();
-                setSelectedPark(park);
-              }}
-            >
-              <img src="/skateboarding.svg" alt="Skate Park Icon" />
-            </button>
+          {console.log('hit')}
           </Marker>
         ))}
+        </ReactMapGL>
 
-        {selectedPark ? (
-          <Popup
-            latitude={selectedPark.geometry.coordinates[1]}
-            longitude={selectedPark.geometry.coordinates[0]}
-            onClose={() => {
-              setSelectedPark(null);
-            }}
-          >
-            <div>
-              <h2>{selectedPark.properties.NAME}</h2>
-              <p>{selectedPark.properties.DESCRIPTIO}</p>
-            </div>
-          </Popup>
-        ) : null}
-      </ReactMapGL>
     </div>
-  );
+  )
 }
