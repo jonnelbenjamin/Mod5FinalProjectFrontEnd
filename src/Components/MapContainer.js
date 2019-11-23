@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Segment} from 'semantic-ui-react'
-import APIkey from '../googlemapsAPIkey'
+import APIkey from '../mapboxAPIkey'
 import InfoWindow from './InfoWindow'
 import { connect } from 'react-redux'
 import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
