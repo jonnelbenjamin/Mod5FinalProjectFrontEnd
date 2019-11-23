@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { Segment} from 'semantic-ui-react'
 import APIkey from '../googlemapsAPIkey'
@@ -8,12 +8,35 @@ import {fetchingDisasters, fetchingLocations} from '../Redux/actions'
 import AreaInfo from './AreaInfo'
 import Iframe from 'react-iframe'
 
+import ReactMapGL from 'react-map-gl'
+
 const mapStyles = {
   width: '100%',
   height: '100%',
   paddingBottom: '600px'
 };
+const [viewport, setViewport] = useState({
+    latitude: 45.4211,
+    longitude: -75.6903,
+    width: "100vw",
+    height: "100vh",
+    zoom: 10
+  });
 
+  const [selectedPark, setSelectedPark] = useState(null);
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.key === "Escape") {
+        setSelectedPark(null);
+      }
+    };
+    window.addEventListener("keydown", listener);
+
+    return () => {
+      window.removeEventListener("keydown", listener);
+    };
+  }, []);
 
 
 export class MapContainer extends Component {
@@ -37,15 +60,6 @@ export class MapContainer extends Component {
      })
    }
 
-  // onMouseoverMarker = (props, marker, e) => {
-  // this.setState({
-  //   selectedPlace: props,
-  //   activeMarker: marker,
-  //   showingInfoWindow: true
-  // })
-  // }
-  // onMouseover={this.onMouseoverMarker}
-
  onMapClicked = (props) => {
    if (this.state.showingInfoWindow) {
      this.setState({
@@ -58,48 +72,8 @@ export class MapContainer extends Component {
 
   render() {
     return (
+      <ReactMapGL {...viewport}></ReactMapGL>
 
-      <div>
-        <div className="iFrameBackground">
-          <Iframe url="https://www.fema.gov/help/widgets/severe_weather.html"
-          width="380px"
-          height="430px"
-          id="myId"
-          className="widget"
-          display="initial"
-          position="absolute"
-          allowFullScreen/>
-        </div>
-      <Map
-        google={this.props.google}
-        zoom={2.5}
-        style={mapStyles}
-        initialCenter={{
-         lat: 0,
-         lng: 0
-       }}
-       onClick={this.onMapClicked}>
-       {this.props.disasters.map( disaster =>
-        <Marker
-          key={disaster.id}
-          active={disaster.active}
-          description={disaster.description}
-          name={disaster.location.name}
-          position={{lat: disaster['latitude'], lng: disaster['longitude']}}
-          onClick={this.onMarkerClick} />)}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
-            <div><h3>{this.state.selectedPlace.description} in {this.state.selectedPlace.name}</h3></div>
-            <div><h3>{this.state.selectedPlace.active === true ? 'Warning: Active' : 'Not Active'}</h3></div>
-          </InfoWindow>
-      </Map>
-      <div>
-    {this.state.showingInfoWindow === false ? null : <Segment raised  id="segment"><AreaInfo
-    selectedPlace={this.state.selectedPlace}/></Segment>}
-    </div>
-
-      </div>
     )
   }
 }
