@@ -11,12 +11,13 @@ import Iframe from 'react-iframe'
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import * as parkDate from "./data/skateboard-parks.json";
 
-export const App = () => {
+export default function MapContainer() {
 
-  componentDidMount(){
+  useEffect(() => {
     this.props.fetchingDisasters()
     this.props.fetchingLocations()
-    }
+  }, []);
+
 
 
 
