@@ -14,8 +14,6 @@ import * as parkDate from "./data/skateboard-parks.json";
 
  class MapContainer extends Component {
 
- URL = 'http://localhost:3000/disasters'
-
    state = {
      latitude: 18.448347,
        longitude: -20.793440,
@@ -74,43 +72,38 @@ render(){
           name={disaster.location.name}
           latitude={disaster['latitude']}
           longitude={disaster['longitude']}
-          onClick={this.onMarkerClick}
+
         >
-    <img
+    <button
       className="marker-btn"
       src="./data/location.png"
-        onClick={e => {
-            e.preventDefault();
-            this.setState({selectedPark: e});}}
-            ></img>
+      onClick={e => {
+          e.persist()
+          this.setState({selectedPark: disaster});}}
+            ></button>
         </Marker>
       ))}
+
+      {this.state.selectedPark ? (
+        <Popup
+          latitude={this.state.selectedPark['latitude']}
+          longitude={this.state.selectedPark['longitude']}
+          onClose={() => {
+            this.setState({selectedPark: null});
+          }}
+        >
+          <div>
+            <h2>{this.state.selectedPark.location.name}</h2>
+            <p>{this.state.selectedPark.location.description}</p>
+          </div>
+        </Popup>
+      ) : null}
 
     </ReactMapGL>
     </div>
 
   );
 }}
-// <ReactMapGL>
-//   // {this.props.disasters.map(disaster => (
-//   //   <Marker
-//   //     key={disaster.id}
-//   //     active={disaster.active}
-//   //     description={disaster.description}
-//   //     name={disaster.location.name}
-//   //     latitude={disaster['latitude']}
-//   //     longitude={disaster['longitude']}
-//   //     onClick={this.onMarkerClick}
-//   //   >
-// <button
-//   className="marker-btn"
-//     onClick={e => {
-//         e.preventDefault();
-//         setSelectedPark(e);}}
-//         ></button>
-//   //   </Marker>
-//   // ))}
-//   </ReactMapGL>
 
 
 const mapStateToProps = state => {
