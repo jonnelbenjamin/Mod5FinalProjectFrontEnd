@@ -9,7 +9,7 @@ import Iframe from 'react-iframe'
 import {useFetch} from '../Hooks/useFetch'
 
 
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, Button } from "react-map-gl";
 import * as parkDate from "./data/skateboard-parks.json";
 
  class MapContainer extends Component {
@@ -20,7 +20,8 @@ import * as parkDate from "./data/skateboard-parks.json";
        width: "98.8vw",
        height: "82.5vh",
        zoom: 1.5,
-       selectedPark: null
+       selectedPark: null,
+       areaInfoState: null
 
    }
    componentDidMount(){
@@ -74,13 +75,14 @@ render(){
           longitude={disaster['longitude']}
 
         >
-    <button
+
+    <img
       className="marker-btn"
-      src="./data/location.png"
+      src="./location.png"
       onClick={e => {
           e.persist()
           this.setState({selectedPark: disaster});}}
-            ></button>
+            ></img>
         </Marker>
       ))}
 
@@ -96,6 +98,13 @@ render(){
             <h2>{this.state.selectedPark.location.name}</h2>
             {this.state.selectedPark.active == true ? <p>{this.state.selectedPark.description} Active</p> :
              <p>{this.state.selectedPark.description} Not Active</p>}
+             <div onClick={e => {
+
+               console.log(this.state.selectedPark)
+               this.setState({ areaInfoState: this.state.selectedPark})
+             }}>
+             <button >Click</button>
+             </div>
           </div>
         </Popup>
       ) : null}
