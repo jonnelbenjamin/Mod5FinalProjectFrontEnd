@@ -94,7 +94,8 @@ render(){
         >
           <div>
             <h2>{this.state.selectedPark.location.name}</h2>
-            <p>{this.state.selectedPark.location.description}</p>
+            {this.state.selectedPark.active == true ? <p>{this.state.selectedPark.description} Active</p> :
+             <p>{this.state.selectedPark.description} Not Active</p>}
           </div>
         </Popup>
       ) : null}
