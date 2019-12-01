@@ -93,17 +93,20 @@ render(){
           onClose={() => {
             this.setState({selectedPark: null});
           }}
+          setDOMContent={document.createElement('h1')}
+
         >
           <div>
             <h2>{this.state.selectedPark.location.name}</h2>
             {this.state.selectedPark.active == true ? <p>{this.state.selectedPark.description} Active</p> :
              <p>{this.state.selectedPark.description} Not Active</p>}
              <div onClick={e => {
-
                console.log(this.state.selectedPark)
                this.setState({ areaInfoState: this.state.selectedPark})
              }}>
-             <button >Click</button>
+             <button onClick={() => {
+               console.log('hit')
+             }} >Click</button>
              </div>
           </div>
         </Popup>
